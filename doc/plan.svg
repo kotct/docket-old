@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="plan.svg"
+   inkscape:export-filename="/home/kristofer/git/github/kotct/docket/doc/plan.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <inkscape:path-effect
@@ -39,9 +42,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="4426.3785"
-     inkscape:cy="1832.8922"
+     inkscape:zoom="0.022097087"
+     inkscape:cx="18298.927"
+     inkscape:cy="-3078.84"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -280,5 +283,17 @@
          x="5297.1426"
          y="-830.44214"
          id="tspan3079" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Sans Bold"
+       x="1760"
+       y="7260.5713"
+       id="text3120"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-7139.6378)"><tspan
+         sodipodi:role="line"
+         id="tspan3122"
+         x="1760"
+         y="7260.5713" /></text>
   </g>
 </svg>

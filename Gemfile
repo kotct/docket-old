@@ -45,7 +45,7 @@ gem 'bcrypt-ruby'
 # gem 'debugger', group: [:development, :test]
 
 gem 'thin'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'rspec-rails', :group => [:test, :development]
 
 group :test do

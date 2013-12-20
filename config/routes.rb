@@ -2,18 +2,17 @@ Docket::Application.routes.draw do
 	get "welcome/index"
 
 	resources :memberships
-
 	resources :exams
-
 	resources :assignments
-
 	resources :classrooms
-
 	resources :courses
-
 	resources :teachers
-
+	resources :sessions
 	resources :users
+
+	get "sessions/new"
+	get "log_in" => "sessions#new", :as => "log_in"
+	get "log_out" => "sessions#destroy", :as => "log_out"
 
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
@@ -31,7 +30,7 @@ Docket::Application.routes.draw do
 	#   resources :products
 
 	# Example resource route with options:
-	#   resources :products do
+	#   resources :products dob
 	#     member do
 	#       get 'short'
 	#       post 'toggle'

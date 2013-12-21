@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "User" do
+describe "User request" do
 
-	describe "create" do
+	describe "Create" do
 
 		it "creates a user" do
 			user = FactoryGirl.build(:user)
@@ -58,7 +58,7 @@ describe "User" do
 		
 	end
 		
-	describe "edit" do
+	describe "Edit" do
 		
 		it "successfully edits a user" do
 			user = FactoryGirl.create(:user)
@@ -94,7 +94,7 @@ describe "User" do
 
 	end
 
-	describe "show" do
+	describe "Show" do
 		
 		it "successfully shows a user" do
 			user = FactoryGirl.create(:user)
@@ -127,6 +127,30 @@ describe "User" do
 			visit user_url(user)
 			page.should_not have_content user.name
 			page.should_not have_content user.email
+			page.should have_content "permission"
+		end
+
+	end
+
+	describe "Index" do
+		
+		it "successfully indexes all users" do
+			user_admin = FactoryGirl.create(:admin)
+			log_in(user_admin)
+			visit users_path
+			page.should_not have_content "You are not logged in!"
+			page.should_not have_content "permission"
+			page.should have_content "users"
+		end
+		
+		it "tries to show a user" do
+			visit users_path
+			page.should_not have_content "Users"
+			page.should have_content "You are not logged in!"
+			user = FactoryGirl.create(:user)
+			log_in(user)
+			visit users_path
+			page.should_not have_content "users"
 			page.should have_content "permission"
 		end
 

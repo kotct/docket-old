@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
 	def create
 		fail_message = "Failed log in!"
+		success_message = "Logged in!"
 
 		users = User.where :email => params["email"]
 
@@ -16,12 +17,12 @@ class SessionsController < ApplicationController
 			if @user.authenticate params["password"]
 				session["current_user_id"] = @user.id
 
-				redirect_to root_path
+				redirect_to root_path, :notice => success_message
 			else
-				redirect_to session_new_path, :alert => fail_message
+				redirect_to sessions_new_path, :alert => fail_message
 			end
 		else
-			redirect_to session_new_path, :alert => fail_message
+			redirect_to sessions_new_path, :alert => fail_message
 		end
 	end
 

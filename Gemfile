@@ -53,3 +53,8 @@ group :test do
 	gem 'capybara'
 	gem 'guard-rspec'
 end
+
+# will use this for admin big brother powers
+gem 'public_activity'
+
+gem 'jquery-turbolinks'

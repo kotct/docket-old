@@ -74,6 +74,19 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def activity
+		@user = User.find(params[:id])
+		ensure_admin unless current_user && @user.id == current_user.id
+		@activities = PublicActivity::Activity.where(:owner_id => @user.id).order("created_at desc")
+	end
+
+	def index_activities
+		ensure_admin
+		@activities = PublicActivity::Activity.order("created_at desc")
+	end
+
+		
+
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_user

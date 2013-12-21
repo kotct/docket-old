@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+	include PublicActivity::StoreController
+
 	# Prevent CSRF attacks by raising an exception.
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
@@ -12,6 +14,7 @@ class ApplicationController < ActionController::Base
 			nil
 		end
 	end
+	hide_action :current_user
 
 	def admin?
 		current_user.admin if current_user

@@ -1,0 +1,20 @@
+<div class="page-header">
+	<h1>Activity</h1>
+</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>User</td>
+			<td>Activity</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @activities.each do |activity| %>
+		<tr>
+			<td><%= activity.owner ? (link_to activity.owner.name, activity.owner) : "" %></td>
+			<td><%= render_activity activity %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -8,7 +8,14 @@ Docket::Application.routes.draw do
 	resources :courses
 	resources :teachers
 	resources :sessions
-	resources :users
+	resources :users do
+		member do
+			get 'activity'
+		end
+		collection do
+			get 'activity' => 'users#index_activities'
+		end
+	end
 
 	get "sessions/new"
 	get "log_in" => "sessions#new", :as => "log_in"

@@ -21,7 +21,7 @@
   <tbody>
     <% @course.classrooms.each do |classroom| %>
       <tr>
-        <td><%= link_to classroom.teacher.name classroom.teacher %></td>
+        <td><%= link_to classroom.teacher.name, classroom.teacher %></td>
         <td><%= classroom.period %></td>
         <td>
 			<div class="btn-group btn-group-xs">

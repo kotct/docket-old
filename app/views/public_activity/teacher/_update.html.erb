@@ -1,0 +1,7 @@
+updated teacher
+<% if activity.trackable %>
+<%= link_to activity.trackable.name, activity.trackable %>
+<% else %>
+(since removed, id <%= activity.trackable_id %>)
+<% end %>
+on <%= activity.created_at.to_s %>

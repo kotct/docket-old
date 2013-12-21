@@ -1,0 +1,13 @@
+<div class="page-header">
+	<h1><%= @user.name %>'s activity</h1>
+</div>
+
+<table class="table table-striped">
+	<tbody>
+		<% @activities.each do |activity| %>
+		<tr>
+			<td><%= render_activity activity %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

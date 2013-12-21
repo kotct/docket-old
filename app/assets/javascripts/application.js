@@ -12,6 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap
-//= require_tree .
+//= require typeahead
+
+var ready;
+ready = function() {
+  $('.course-name-typeahead').typeahead(
+  {
+    name: 'courses',
+    prefetch: '/courses.json',
+    remote: '/courses.json?q=%QUERY'
+  }
+  );
+  $('.teacher-name-typeahead').typeahead(
+  {
+    name: 'teachers',
+    prefetch: '/teachers.json',
+    remote: '/teachers.json?q=%QUERY'
+  }
+  );
+};
+$(document).ready(ready);

@@ -1,29 +1,32 @@
-<h1>Listing teachers</h1>
+<div class="page-header">
+	<h1>Listing teachers</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @teachers.each do |teacher| %>
-      <tr>
-        <td><%= teacher.name %></td>
-        <td><%= teacher.email %></td>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @teachers.each do |teacher| %>
+		<tr>
+			<td><%= link_to teacher.name teacher %></td>
+			<td><%= mail_to teacher.email %></td>
+			<td>
+				<div class="btn-group btn-group-xs">
+					<%= link_to 'Edit', edit_teacher_path(teacher), class: 'btn btn-default btn-xs' %>
+					<%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Teacher', new_teacher_path %>
+<%= link_to 'New Teacher', new_teacher_path, class: "btn btn-primary" %>

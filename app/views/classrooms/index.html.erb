@@ -1,33 +1,33 @@
-<h1>Listing classrooms</h1>
+<div class="page-header">
+	<h1>Listing classes</h1>
+</div>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Course</th>
       <th>Teacher</th>
-      <th>Description</th>
       <th>Period</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @classrooms.each do |classroom| %>
       <tr>
-        <td><%= classroom.course_id %></td>
-        <td><%= classroom.teacher_id %></td>
-        <td><%= classroom.description %></td>
+        <td><%= link_to classroom.course.name, classroom.course %></td>
+        <td><%= link_to classroom.teacher.name, classroom.teacher %></td>
         <td><%= classroom.period %></td>
-        <td><%= link_to 'Show', classroom %></td>
-        <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-        <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+			<div class="btn-group btn-group-xs">
+				<%= link_to 'Show', classroom, class: 'btn btn-primary btn-xs' %>
+				<%= link_to 'Edit', edit_classroom_path(classroom), class: 'btn btn-default btn-xs' %>
+				<%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+			</div>
+		</td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Classroom', new_classroom_path %>
+<%= link_to 'New Classroom', new_classroom_path, class: "btn btn-primary" %>

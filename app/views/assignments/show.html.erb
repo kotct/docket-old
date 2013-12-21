@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @assignment.name %></h1>
+</div>
 
 <p>
-  <strong>Name:</strong>
-  <%= @assignment.name %>
+	For <a href="<%= classroom_path(@assignment.classroom) %>"><%= @assignment.classroom.teacher.name %>'s <%= @assignment.classroom.period.ordinalize %> period <%= @assignment.classroom.course.name %> class</a>.
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
+	Due <%= @assignment.due_date %>.
 </p>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @assignment.due_date %>
-</p>
+<p><%= @assignment.description %></p>
 
-<p>
-  <strong>Classroom:</strong>
-  <%= @assignment.classroom_id %>
-</p>
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<div class="btn-group">
+	<%= link_to 'Edit', edit_assignment_path(@assignment), class: "btn btn-primary" %>
+	<%= link_to 'Back', classroom_path(@assignment.classroom), class: "btn btn-default" %>
+</div>

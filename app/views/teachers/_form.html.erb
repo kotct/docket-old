@@ -1,25 +1,31 @@
-<%= form_for(@teacher) do |f| %>
-  <% if @teacher.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+<%= form_for @teacher, :html => { :class => "form-horizontal" } do |f| %>
+<% if @teacher.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
 
-      <ul>
-      <% @teacher.errors.full_messages.each do |msg| %>
+    <ul>
+		<% @teacher.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<% end %>
+    </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-group">
+    <%= f.label :name, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-10">
+		<%= f.text_field :name, :class => "form-control" %>
+	</div>
+</div>
+<div class="form-group">
+    <%= f.label :email, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-10">
+		<%= f.text_field :email, :class => "form-control" %>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+		<%= f.submit class: "btn btn-success" %>
+	</div>
+</div>
 <% end %>

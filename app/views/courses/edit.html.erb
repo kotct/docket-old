@@ -1,6 +1,10 @@
-<h1>Editing course</h1>
+<div class="page-header">
+	<h1>Editing course</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<div class="btn-group">
+	<%= link_to 'Show', @course, class: "btn btn-primary" %>
+	<%= link_to 'Back', courses_path, class: "btn btn-default" %>
+</div>

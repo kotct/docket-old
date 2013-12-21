@@ -1,14 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
-</p>
+<div class="page-header">
+	<h1><%= @teacher.name %></h1>
+</div>
 
 <p>
   <strong>Email:</strong>
-  <%= @teacher.email %>
+  <%= mail_to @teacher.email %>
 </p>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<h2>Classes</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Period</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teacher.classrooms.each do |classroom| %>
+      <tr>
+        <td><%= link_to classroom.course.name classroom.course %></td>
+        <td><%= classroom.period %></td>
+        <td>
+			<div class="btn-group btn-group-xs">
+				<%= link_to 'Show', classroom, class: 'btn btn-info btn-xs' %>
+				<%= link_to 'Edit', edit_classroom_path(classroom), class: 'btn btn-default btn-xs' %>
+				<%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+			</div>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="btn-group">
+	<%= link_to 'Edit', edit_teacher_path(@teacher), class: "btn btn-primary" %>
+	<%= link_to 'Back', teachers_path, class: "btn btn-default" %>
+</div>

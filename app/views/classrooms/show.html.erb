@@ -1,24 +1,68 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+	<h1><%= @classroom.name %></h1>
+</div>
 
 <p>
-  <strong>Course:</strong>
-  <%= @classroom.course_id %>
+	An <%= link_to @classroom.course.name, @classroom.course %> class taught by <%= link_to @classroom.teacher.name, @classroom.teacher %> during period <%= @classroom.period %>.
 </p>
 
-<p>
-  <strong>Teacher:</strong>
-  <%= @classroom.teacher_id %>
-</p>
+<p><%= @classroom.description %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @classroom.description %>
-</p>
+<h2>Exams</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Period:</strong>
-  <%= @classroom.period %>
-</p>
+  <tbody>
+    <% @classroom.exams.sort_by(&:date).first(3).each do |exam| %>
+      <tr>
+        <td><%= link_to exam.name, exam %></td>
+        <td><%= exam.date %></td>
+		<td>
+			<div class="btn-group btn-group-xs">
+				<%= link_to "Edit", edit_exam_path(exam), class: 'btn btn-default btn-xs' %>
+				<%= link_to "Destroy", exam, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+			</div>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
-<%= link_to 'Back', classrooms_path %>
+<h2>Assignments</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Due date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classroom.assignments.sort_by(&:due_date).first(5).each do |assignment| %>
+      <tr>
+        <td><%= link_to assignment.name, assignment %></td>
+        <td><%= assignment.due_date %></td>
+		<td>
+			<div class="btn-group btn-group-xs">
+				<%= link_to "Edit", edit_assignment_path(assignment), class: 'btn btn-default btn-xs' %>
+				<%= link_to "Destroy", assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+			</div>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="btn-group">
+	<%= link_to 'Add Exam', new_exam_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
+	<%= link_to 'Add Assignment', new_assignment_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
+	<%= link_to 'Edit', edit_classroom_path(@classroom), class: "btn btn-primary" %>
+	<%= link_to 'Back', classrooms_path, class: "btn btn-default" %>
+</div>

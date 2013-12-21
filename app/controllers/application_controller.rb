@@ -13,11 +13,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def admin?
+		current_user.admin if current_user
+	end
+
 	def check_for_user
-		redirect_to log_in_path, :alert => "You are not logged in!" unless current_user
+		redirect_to log_in_path, alert: "You are not logged in!" unless current_user
 	end
 
 	def check_for_user_if_not_session_controller
-		check_for_user if params[:controller] != "sessions"
+		check_for_user unless (params[:controller] == "sessions" || params[:controller] == "users")
 	end
 end

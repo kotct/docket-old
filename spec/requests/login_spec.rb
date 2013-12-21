@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Users" do
+describe "LogIn" do
 	describe "LogInUser" do
 		it "logs in a user" do
 			user = FactoryGirl.create(:user)

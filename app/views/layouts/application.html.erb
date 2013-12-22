@@ -35,7 +35,7 @@
 					<% if current_user %>
 					<li><%= link_to "Log out", log_out_path %></li>
 					<% end %>
-					<li><%= link_to "My Docket", "#" %><!-- for now, will be updated once we make the docket controller --></li>
+					<li><%= link_to "My Docket", docket_path %></li>
 					<%= nav_link "Teachers", teachers_path, "teachers" %>
 					<%= nav_link "Courses", courses_path, "courses" %>
 					<%= nav_link "Classes", classrooms_path, "classrooms" %>

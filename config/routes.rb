@@ -1,10 +1,15 @@
 Docket::Application.routes.draw do
 	get "welcome/index"
+	get "docket" => "docket#index"
 
 	resources :memberships
 	resources :exams
 	resources :assignments
-	resources :classrooms
+	resources :classrooms do
+		member do
+			get 'join'
+		end
+	end
 	resources :courses
 	resources :teachers
 	resources :sessions

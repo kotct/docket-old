@@ -1,0 +1,101 @@
+<div class="page-header">
+	<h1>My Docket</h1>
+</div>
+
+<h2>Exams for today and tomorrow</h2>
+<% if @today_and_tomorrow_exams.empty? %>
+No exams today or tomorrow.
+<% else %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Class</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @today_and_tomorrow_exams.sort_by(&:date).each do |exam| %>
+		<tr>
+			<td><%= link_to exam.name, exam %></td>
+			<td><%= link_to exam.classroom.name, exam.classroom %></td>
+			<td><%= exam.date %></td>
+			<td>
+				<div class="btn-group btn-group-xs">
+					<%= link_to "Edit", edit_exam_path(exam), class: 'btn btn-default btn-xs' %>
+					<%= link_to "Destroy", exam, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+
+<h2>Assignments for today and tomorrow</h2>
+<% if @today_and_tomorrow_assignments.empty? %>
+No assignments due today or tomorrow.
+<% else %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Class</th>
+			<th>Due Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @today_and_tomorrow_assignments.sort_by(&:due_date).each do |assignment| %>
+		<tr>
+			<td><%= link_to assignment.name, assignment %></td>
+			<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
+			<td><%= assignment.due_date %></td>
+			<td>
+				<div class="btn-group btn-group-xs">
+					<%= link_to "Edit", edit_assignment_path(assignment), class: 'btn btn-default btn-xs' %>
+					<%= link_to "Destroy", assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+
+<h2>Other assignments and tests</h2>
+<% if @other_things.empty? %>
+No other assignments or tests.
+<% else %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Type</th>
+			<th>Name</th>
+			<th>Class</th>
+			<th>Date/Due Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @other_things.each do |assignment| %>
+		<tr>
+			<td><%= assignment.class.to_s %></td>
+			<td><%= link_to assignment.name, assignment %></td>
+			<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
+			<td><%= relevant_date assignment %></td>
+			<td>
+				<div class="btn-group btn-group-xs">
+					<%= link_to "Edit", edit_assignment_path(assignment), class: 'btn btn-default btn-xs' %>
+					<%= link_to "Destroy", assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>

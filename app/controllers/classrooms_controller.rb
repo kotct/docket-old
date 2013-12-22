@@ -61,6 +61,23 @@ class ClassroomsController < ApplicationController
 		end
 	end
 
+	# GET /classrooms/1/join
+	# I know, kinda hacky
+	def join
+		@classroom = Classroom.find(params[:id])
+
+		params[:user_id] = current_user.id unless admin? && params[:user_id]
+
+		@membership = Membership.new
+		@membership.classroom_id = @classroom.id
+		@membership.user_id = params[:user_id]
+		if @membership.save
+			redirect_to @classroom, notice: "Joined!"
+		else
+			redirect_to root_path, alert: "WTF did you just try to do."
+		end
+	end
+
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_classroom

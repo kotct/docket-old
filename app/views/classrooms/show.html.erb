@@ -61,6 +61,7 @@
 </table>
 
 <div class="btn-group">
+	<%= link_to 'Join', join_classroom_path(@classroom), class: "btn btn-info" %>
 	<%= link_to 'Add Exam', new_exam_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
 	<%= link_to 'Add Assignment', new_assignment_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
 	<%= link_to 'Edit', edit_classroom_path(@classroom), class: "btn btn-primary" %>

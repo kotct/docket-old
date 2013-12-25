@@ -6,9 +6,9 @@
 		<%= stylesheet_link_tag "application" %>
 		<%= javascript_include_tag "application" %>
 		<% unless (yield :javascripts).blank? %>
-		<script type="text/javascript">
-			<%= yield :javascripts %>
-		</script>
+			<script type="text/javascript">
+				<%= yield :javascripts %>
+			</script>
 		<% end %>
 		<%= javascript_include_tag "turbolinks" %>
 		<%= csrf_meta_tags %>
@@ -17,16 +17,16 @@
 	<body>
 		<article>
 			<% if flash[:notice] %>
-			<div class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<%= flash[:notice] %>
-			</div>
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= flash[:notice] %>
+				</div>
 			<% end %>
 			<% if flash[:alert] %>
-			<div class="alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<%= flash[:alert] %>
-			</div>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= flash[:alert] %>
+				</div>
 			<% end %>
 			<div class="row">
 				<div class="col-md-2"></div>

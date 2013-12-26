@@ -12,9 +12,9 @@
 	<% end %>
 
 	<div class="form-group">
-		<%= f.label :course_name, :class => "col-sm-4 control-label" %>
+		<%= f.label :course_id, :class => "col-sm-4 control-label" %>
 		<div class="col-sm-8">
-			<%= f.text_field :course_name, :class => "form-control course-name-typeahead typeahead" %>
+			<%= f.select :course_id, [["None", nil]] + Course.all.map {|c| [c.name, c.id]}, :class => "form-control course-id-typeahead typeahead" %>
 		</div>
 	</div>
 	<div class="form-group">

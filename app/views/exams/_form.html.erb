@@ -29,7 +29,7 @@
 			<%= f.datetime_select :date, class: "form-control" %>
 		</div>
 	</div>
-	<%= f.hidden_field :classroom_id, value: (@exam ? @exam.classroom_id : params[:classroom_id]), class: "form-control" %>
+	<%= f.hidden_field :classroom_id, value: (@exam.classroom_id ? @exam.classroom_id : params[:classroom_id]), class: "form-control" %>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<%= f.submit class: "btn btn-success" %>

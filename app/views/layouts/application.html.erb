@@ -15,7 +15,7 @@
 	</head>
 
 	<body>
-		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top do %>
+		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top, :container => false do %>
 			<%= navbar_group :class => "foo", :id => "menu" do %>
 				<%= navbar_text (current_user ? "Logged in as " + current_user.name : "Not logged in") %>
 				<%= navbar_item "Log out", log_out_path if current_user %>

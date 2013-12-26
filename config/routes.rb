@@ -10,6 +10,7 @@ Docket::Application.routes.draw do
 			get 'join'
 		end
 	end
+
 	resources :courses
 	resources :teachers
 	resources :sessions

@@ -1,29 +1,32 @@
-<h1>Listing events</h1>
+<div class="page-header">
+	<h1>Listing events</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.description %></td>
-        <td><%= event.date %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @events.each do |event| %>
+			<tr>
+				<td><%= link_to event.name, event %></td>
+				<td><%= event.description %></td>
+				<td><%= event.date %></td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<%= link_to 'Edit', edit_event_path(event), class: "btn btn-default btn-xs" %>
+						<%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>

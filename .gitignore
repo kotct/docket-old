@@ -21,3 +21,6 @@
 .*
 !.gitignore
 !.gitkeep
+
+# Hide any patches we have in our trees
+*.patch

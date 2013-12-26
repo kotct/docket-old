@@ -8,9 +8,9 @@ Docket::Application.routes.draw do
 	resources :classrooms do
 		member do
 			get 'join'
+			get 'leave'
 		end
 	end
-
 	resources :courses
 	resources :teachers
 	resources :sessions

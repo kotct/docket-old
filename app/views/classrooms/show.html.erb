@@ -68,9 +68,13 @@
 </table>
 
 <div class="btn-group">
-	<%= link_to 'Join', join_classroom_path(@classroom), class: "btn btn-info" %>
-	<%= link_to 'Add Exam', new_exam_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
-	<%= link_to 'Add Assignment', new_assignment_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-success" %>
+	<%= link_to 'Add Exam', new_exam_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-info" %>
+	<%= link_to 'Add Assignment', new_assignment_path + '?classroom_id=' + @classroom.id.to_s, class: "btn btn-info" %>
+	<% if @classroom.users.include? current_user %>
+		<%= link_to "Leave", leave_classroom_path(@classroom), class: "btn btn-danger" %>
+	<% else %>
+		<%= link_to "Join", join_classroom_path(@classroom), class: "btn btn-success" %>
+	<% end %>
 	<%= link_to 'Edit', edit_classroom_path(@classroom), class: "btn btn-primary" %>
 	<%= link_to 'Back', classrooms_path, class: "btn btn-default" %>
 </div>

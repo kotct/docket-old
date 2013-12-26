@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222002119) do
+ActiveRecord::Schema.define(version: 20131226134259) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20131222002119) do
     t.string   "name"
     t.text     "description"
     t.string   "course_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

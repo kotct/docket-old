@@ -6,7 +6,7 @@ class Classroom < ActiveRecord::Base
 	validates :course_name, presence: true
 	validates :teacher_name, presence: true
 
-	def name
+	def information
 		course.name + " -- " + period.ordinalize + " hour" + " -- " + teacher.name
 	end
 

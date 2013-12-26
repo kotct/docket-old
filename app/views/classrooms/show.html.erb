@@ -8,6 +8,13 @@
 
 <p><%= @classroom.description %></p>
 
+<p>
+	<strong>Members:</strong>
+	<% @classroom.users.each do |student| %>
+		<%= link_to student.name, student %>
+	<% end %>
+</p>
+
 <h2>Exams</h2>
 <table class="table table-striped">
 	<thead>

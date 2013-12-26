@@ -31,5 +31,5 @@ class Classroom < ActiveRecord::Base
 	has_many :assignments
 	has_many :exams
 	has_many :memberships
-	has_many :students, :through => :memberships
+	has_many :users, :through => :memberships
 end

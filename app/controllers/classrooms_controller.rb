@@ -74,7 +74,7 @@ class ClassroomsController < ApplicationController
 		if @membership.save
 			redirect_to @classroom, notice: "Joined!"
 		else
-			redirect_to root_path, alert: "WTF did you just try to do."
+			redirect_to @classroom, alert: "You are already a member of this class!"
 		end
 	end
 

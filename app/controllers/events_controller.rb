@@ -61,7 +61,39 @@ class EventsController < ApplicationController
     end
   end
 
-  private
+	# GET /events/1/join
+	# Copied from classroom controller
+	def join
+		@event = Event.find(params[:id])
+
+		params[:user_id] = current_user.id unless admin? && params[:user_id]
+
+		@attendance = Attendance.new
+		@attendance.event_id = @event.id
+		@attendance.user_id = params[:user_id]
+		if @attendance.save
+			redirect_to @event, notice: "Joined!"
+		else
+			redirect_to root_path, alert: "WTF did you just try to do."
+		end
+	end
+
+	# GET /events/1/leave
+	def leave
+		@event = Event.find(params[:id])
+
+		params[:user_id] = current_user.id unless admin? && params[:user_id]
+
+		@attendance = Attendance.where("user_id = ? AND event_id = ?", params[:user_id], @event.id).first
+		if @attendance.destroy
+			redirect_to @event, notice: "Left!"
+		else
+			redirect_to root_path, alert: "WTF did you just try to do."
+		end
+	end
+
+
+	private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

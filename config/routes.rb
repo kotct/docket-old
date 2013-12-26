@@ -22,7 +22,12 @@ Docket::Application.routes.draw do
 			get 'activity' => 'users#index_activities'
 		end
 	end
-	resources :events
+	resources :events do
+		member do
+			get 'join'
+			get 'leave'
+		end
+	end
 
 	get "sessions/new"
 	get "log_in" => "sessions#new", :as => "log_in"

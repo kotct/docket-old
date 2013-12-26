@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 			nil
 		end
 	end
+
 	hide_action :current_user
 
 	def admin?

@@ -3,7 +3,7 @@
 </div>
 
 <p>
-	<%= indefinite_article(@classroom.course.name).capitalize %> <%= link_to @classroom.course.name, @classroom.course %> class taught by <%= link_to @classroom.teacher.name, @classroom.teacher %> during period <%= @classroom.period %>.
+	<%= @classroom.course.name.indefinite_article.capitalize %> <%= link_to @classroom.course.name, @classroom.course %> class taught by <%= link_to @classroom.teacher.name, @classroom.teacher %> during period <%= @classroom.period %>.
 </p>
 
 <p><%= @classroom.description %></p>

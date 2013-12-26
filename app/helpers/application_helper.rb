@@ -18,10 +18,4 @@ module ApplicationHelper
 			nil
 		end
 	end
-
-	# Gets the appropriate English indefinite article for a word.
-	# Does not handle special cases, such as "hour".
-	def indefinite_article(word)
-		%w(a e i o u).include?(word[0].downcase) ? "an" : "a"
-	end
 end

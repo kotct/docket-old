@@ -11,10 +11,10 @@
 	</thead>
 	<tbody>
 		<% @activities.each do |activity| %>
-		<tr>
-			<td><%= activity.owner ? (link_to activity.owner.name, activity.owner) : "" %></td>
-			<td><%= render_activity activity %></td>
-		</tr>
+			<tr>
+				<td><%= activity.owner ? (link_to activity.owner.name, activity.owner) : "" %></td>
+				<td><%= render_activity activity %></td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>

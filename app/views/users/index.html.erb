@@ -14,17 +14,17 @@
 
 	<tbody>
 		<% @users.each do |user| %>
-		<tr>
-			<td><%= link_to user.name, user %></td>
-			<td><%= mail_to user.email %></td>
-			<td><%= user.graduation_year %></td>
-			<td>
-				<div class="btn-group btn-group-xs">
-					<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-default btn-xs' %>
-					<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
-				</div>
-			</td>
-		</tr>
+			<tr>
+				<td><%= link_to user.name, user %></td>
+				<td><%= mail_to user.email %></td>
+				<td><%= user.graduation_year %></td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<%= link_to 'Edit', edit_user_path(user), class: 'btn btn-default btn-xs' %>
+						<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+					</div>
+				</td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>

@@ -3,30 +3,30 @@
 </div>
 
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Class</th>
-      <th>Due date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Class</th>
+			<th>Due date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @assignments.sort_by(&:due_date).each do |assignment| %>
-      <tr>
-        <td><%= link_to assignment.name, assignment %></td>
-        <td><%= link_to assignment.classroom.name, assignment.classroom %></td>
-        <td><%= assignment.due_date %></td>
-		<td>
-			<div class="btn-group btn-group-xs">
-				<%= link_to "Edit", edit_assignment_path(assignment), class: 'btn btn-default btn-xs' %>
-				<%= link_to "Destroy", assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
-			</div>
-		</td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @assignments.sort_by(&:due_date).each do |assignment| %>
+			<tr>
+				<td><%= link_to assignment.name, assignment %></td>
+				<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
+				<td><%= assignment.due_date %></td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<%= link_to "Edit", edit_assignment_path(assignment), class: 'btn btn-default btn-xs' %>
+						<%= link_to "Destroy", assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <%= link_to 'New Assignment', new_assignment_path, class: "btn btn-primary" %>

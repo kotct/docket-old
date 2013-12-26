@@ -1,10 +1,10 @@
 created exam
 <% if activity.trackable %>
-<%= link_to activity.trackable.name, activity.trackable %>
-<% if activity.trackable.classroom %>
-in class <%= link_to activity.trackable.classroom.name, activity.trackable.classroom %>
-<% end %>
+	<%= link_to activity.trackable.name, activity.trackable %>
+	<% if activity.trackable.classroom %>
+		in class <%= link_to activity.trackable.classroom.name, activity.trackable.classroom %>
+	<% end %>
 <% else %>
-(since removed, id <%= activity.trackable_id %>)
+	(since removed, id <%= activity.trackable_id %>)
 <% end %>
 on <%= activity.created_at.to_s %>

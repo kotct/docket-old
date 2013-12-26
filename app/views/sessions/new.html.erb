@@ -3,11 +3,11 @@
 </div>
 
 <%= form_tag sessions_path, :html => { :class => "form-horizontal" } do %>
-<div class="form-group">
-    <%= text_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
-</div>
-<div class="form-group">
-    <%= password_field_tag :password, nil, class: "form-control", placeholder: "Password" %>
-</div>
-<%= submit_tag "Log in", class: "btn btn-success" %>
+	<div class="form-group">
+		<%= text_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
+	</div>
+	<div class="form-group">
+		<%= password_field_tag :password, nil, class: "form-control", placeholder: "Password" %>
+	</div>
+	<%= submit_tag "Log in", class: "btn btn-success" %>
 <% end %>

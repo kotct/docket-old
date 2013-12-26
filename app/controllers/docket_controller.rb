@@ -24,8 +24,18 @@ class DocketController < ApplicationController
 			end
 		end
 
+		@today_and_tomorrow_events = []
+		@other_events = []
+		current_user.events.each do |e|
+			case 
+			when ((e.date == Date.today) or (e.date == Date.today + 1.day))
+				@today_and_tomorrow_events << e
+			when e.date > Date.today + 1.day
+				@other_events << e
+			end
+		end
 
-		@other_things = (@other_assignments + @other_exams).sort do |thing1, thing2|
+		@other_things = (@other_assignments + @other_exams + @other_events).sort do |thing1, thing2|
 			relevant_date(thing1) <=> relevant_date(thing2)
 		end
 	end

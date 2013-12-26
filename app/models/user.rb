@@ -23,4 +23,6 @@ class User < ActiveRecord::Base
 
 	has_many :memberships
 	has_many :classrooms, :through => :memberships
+	has_many :attendances
+	has_many :events, :through => :attendances
 end

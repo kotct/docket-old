@@ -1,0 +1,17 @@
+<% if activity.trackable %>
+	modified attendance of
+	<% if activity.trackable.user %>
+		<%= link_to activity.trackable.user.name, activity.trackable.user %>,
+	<% else %>
+		a since removed user (id <%= activity.trackable.user_id %>),
+	<% end %>
+	going to
+	<% if activity.trackable.event %>
+		<%= link_to activity.trackable.event.name, activity.trackable.event %>
+	<% else %>
+		a since removed event (id <%= activity.trackable.event_id %>)
+	<% end %>
+<% else %>
+	updated a since destroyed attendance (id <%= activity.trackable_id %>)
+<% end %>
+on <%= activity.created_at.to_s %>

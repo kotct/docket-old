@@ -7,9 +7,9 @@ Docket::Application.routes.draw do
 	resources :classrooms do
 		member do
 			get 'join'
+			get 'leave'
 		end
 	end
-
 	resources :courses
 	resources :teachers
 	resources :sessions
@@ -19,6 +19,12 @@ Docket::Application.routes.draw do
 		end
 		collection do
 			get 'activity' => 'users#index_activities'
+		end
+	end
+	resources :events do
+		member do
+			get 'join'
+			get 'leave'
 		end
 	end
 

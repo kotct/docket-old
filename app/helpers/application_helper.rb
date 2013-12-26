@@ -5,6 +5,8 @@ module ApplicationHelper
 			thing.due_date
 		when thing.class == Exam
 			thing.date
+		when thing.class == Event
+			thing.date
 		else
 			throw "that's not a assignment or exam, its a " + thing.class.to_s
 			Date.new(1970, 1, 1)

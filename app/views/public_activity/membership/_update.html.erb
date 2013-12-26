@@ -1,0 +1,17 @@
+<% if activity.trackable %>
+	updated
+	<% if activity.trackable.user %>
+		<%= link_to activity.trackable.user.name, activity.trackable.user %>
+	<% else %>
+		a since removed user (id <%= activity.trackable.user_id %>)
+	<% end %>
+	to
+	<% if activity.trackable.classroom %>
+		<%= link_to activity.trackable.classroom.name, activity.trackable.classroom %>
+	<% else %>
+		a since removed classroom (id <%= activity.trackable.classroom_id %>)
+	<% end %>
+<% else %>
+	updated a since destroyed membership (id <%= activity.trackable_id %>)
+<% end %>
+on <%= activity.created_at.to_s %>

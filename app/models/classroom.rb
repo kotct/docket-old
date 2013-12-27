@@ -10,6 +10,8 @@ class Classroom < ActiveRecord::Base
 		course.name + " -- " + period.ordinalize + " hour" + " -- " + teacher.name
 	end
 
+	alias_method :information, :name
+
 	def course_name
 		course.name if course
 	end

@@ -28,10 +28,10 @@ class AssignmentsController < ApplicationController
 
 		respond_to do |format|
 			if @assignment.save
-				format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
-				format.json { render action: 'show', status: :created, location: @assignment }
+				format.html { redirect_to @assignment, notice: "Assignment was successfully created." }
+				format.json { render action: "show", status: :created, location: @assignment }
 			else
-				format.html { render action: 'new' }
+				format.html { render action: "new" }
 				format.json { render json: @assignment.errors, status: :unprocessable_entity }
 			end
 		end
@@ -42,10 +42,10 @@ class AssignmentsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @assignment.update(assignment_params)
-				format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
+				format.html { redirect_to @assignment, notice: "Assignment was successfully updated." }
 				format.json { head :no_content }
 			else
-				format.html { render action: 'edit' }
+				format.html { render action: "edit" }
 				format.json { render json: @assignment.errors, status: :unprocessable_entity }
 			end
 		end

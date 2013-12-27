@@ -36,10 +36,10 @@ class CoursesController < ApplicationController
 
 		respond_to do |format|
 			if @course.save
-				format.html { redirect_to @course, notice: 'Course was successfully created.' }
-				format.json { render action: 'show', status: :created, location: @course }
+				format.html { redirect_to @course, notice: "Course was successfully created." }
+				format.json { render action: "show", status: :created, location: @course }
 			else
-				format.html { render action: 'new' }
+				format.html { render action: "new" }
 				format.json { render json: @course.errors, status: :unprocessable_entity }
 			end
 		end
@@ -50,10 +50,10 @@ class CoursesController < ApplicationController
 	def update
 		respond_to do |format|
 			if @course.update(course_params)
-				format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+				format.html { redirect_to @course, notice: "Course was successfully updated." }
 				format.json { head :no_content }
 			else
-				format.html { render action: 'edit' }
+				format.html { render action: "edit" }
 				format.json { render json: @course.errors, status: :unprocessable_entity }
 			end
 		end

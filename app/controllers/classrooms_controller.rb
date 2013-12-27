@@ -28,10 +28,10 @@ class ClassroomsController < ApplicationController
 
 		respond_to do |format|
 			if @classroom.save
-				format.html { redirect_to @classroom, notice: 'Classroom was successfully created.' }
-				format.json { render action: 'show', status: :created, location: @classroom }
+				format.html { redirect_to @classroom, notice: "Classroom was successfully created." }
+				format.json { render action: "show", status: :created, location: @classroom }
 			else
-				format.html { render action: 'new' }
+				format.html { render action: "new" }
 				format.json { render json: @classroom.errors, status: :unprocessable_entity }
 			end
 		end
@@ -42,10 +42,10 @@ class ClassroomsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @classroom.update(classroom_params)
-				format.html { redirect_to @classroom, notice: 'Classroom was successfully updated.' }
+				format.html { redirect_to @classroom, notice: "Classroom was successfully updated." }
 				format.json { head :no_content }
 			else
-				format.html { render action: 'edit' }
+				format.html { render action: "edit" }
 				format.json { render json: @classroom.errors, status: :unprocessable_entity }
 			end
 		end

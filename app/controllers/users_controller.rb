@@ -37,10 +37,10 @@ class UsersController < ApplicationController
 
 		respond_to do |format|
 			if @user.save
-				format.html { redirect_to log_in_path, notice: 'User was successfully created.' }
-				format.json { render action: 'show', status: :created, location: @user }
+				format.html { redirect_to log_in_path, notice: "User was successfully created." }
+				format.json { render action: "show", status: :created, location: @user }
 			else
-				format.html { render action: 'new' }
+				format.html { render action: "new" }
 				format.json { render json: @user.errors, status: :unprocessable_entity }
 			end
 		end
@@ -50,13 +50,13 @@ class UsersController < ApplicationController
 	# PATCH/PUT /users/1.json
 	def update
 		@user.admin = nil unless admin?
-		
+
 		respond_to do |format|
 			if @user.update(user_params)
-				format.html { redirect_to @user, notice: 'User was successfully updated.' }
+				format.html { redirect_to @user, notice: "User was successfully updated." }
 				format.json { head :no_content }
 			else
-				format.html { render acxtion: 'edit' }
+				format.html { render action: "edit" }
 				format.json { render json: @user.errors, status: :unprocessable_entity }
 			end
 		end
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 	# DELETE /users/1.json
 	def destroy
 		ensure_admin unless current_user && @user.id == current_user.id
-		
+
 		@user.destroy
 		respond_to do |format|
 			format.html { redirect_to users_url }
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 		@activities = PublicActivity::Activity.order("created_at desc")
 	end
 
-		
+
 
 	private
 	# Use callbacks to share common setup or constraints between actions.

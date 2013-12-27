@@ -15,14 +15,16 @@
 	</head>
 
 	<body>
-		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top, :container => false do %>
+		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top do %>
 			<%= navbar_group :class => "foo", :id => "menu" do %>
-				<%= navbar_text (current_user ? "Logged in as " + current_user.name : "Not logged in") %>
-				<%= navbar_item "Log out", log_out_path if current_user %>
 				<%= navbar_item "My Docket", docket_path %>
 				<%= navbar_item "Teachers", teachers_path %>
 				<%= navbar_item "Courses", courses_path %>
 				<%= navbar_item "Classes", classrooms_path %>
+			<% end %>
+			<%= navbar_group :align => 'right' do %>
+				<%= navbar_text (current_user ? "Logged in as " + current_user.name : "Not logged in") %>
+				<%= navbar_item "Log out", log_out_path if current_user %>
 			<% end %>
 		<% end %>
 

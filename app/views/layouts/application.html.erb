@@ -15,7 +15,7 @@
 	</head>
 
 	<body>
-		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top, :container => false do %>
+		<%= navbar :brand => "Docket", :brand_link => root_url, :fixed => :top do %>
 			<%= navbar_group :class => "foo", :id => "menu" do %>
 				<%= navbar_item "My Docket", docket_path %>
 				<%= navbar_item "Teachers", teachers_path %>

@@ -102,5 +102,11 @@ body {
 }
 
 .navbar > .container {
-	width:auto;
+	width: auto;
+}
+
+
+/* Custom CSS Rules */
+.link-no-underline:hover {
+    text-decoration: none;
 }

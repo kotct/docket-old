@@ -36,6 +36,10 @@ class Classroom < ActiveRecord::Base
 		self.exams.select {|exam| exam.date == day}
 	end
 
+	def day_activities(day)
+		self.day_assignments(day) + self.day_exams(day)
+	end
+
 	belongs_to :teacher
 	belongs_to :course
 	has_many :assignments

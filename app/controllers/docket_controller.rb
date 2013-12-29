@@ -3,17 +3,9 @@ class DocketController < ApplicationController
 		redirect_to log_in_path, notice: "Please log in to use Docket." unless current_user
 
 		@current_day = Date.today
-
-		@days_of_today_and_tomorrow = []
-
-		(0..2).each do |wnum|
-			@days_of_today_and_tomorrow << @current_day + wnum.days
-		end
-
 		@days_of_this_week = []
 
 		difference_between_today_and_start_of_week = @current_day.wday
-
 		start_of_week = @current_day - difference_between_today_and_start_of_week.days
 
 		(0..6).each do |wnum|
@@ -22,7 +14,6 @@ class DocketController < ApplicationController
 
 		start_of_other_range = @days_of_this_week.last
 
-		@today_and_tomorrow_exams = []
 		@this_week_exams = []
 		@other_exams = []
 
@@ -30,14 +21,11 @@ class DocketController < ApplicationController
 			case
 			when (@days_of_this_week.include? e.date)
 				@this_week_exams << e
-			when (@days_of_today_and_tomorrow.include? e.date)
-			      @today_and_tomorrow_exams << e
 			when (e.date > start_of_other_range)
 				@other_exams << e
 			end
 		end
 
-		@today_and_tomorrow_assignments = []
 		@this_week_assignments = []
 		@other_assignments = []
 
@@ -45,14 +33,11 @@ class DocketController < ApplicationController
 			case
 			when (@days_of_this_week.include? e.due_date)
 				@this_week_assignments << e
-			when (@days_of_today_and_tomorrow.include? e.due_date)
-				@today_and_tomorrow_assignments << e
 			when (e.due_date > start_of_other_range)
 				@other_assignments << e
 			end
 		end
 
-		@today_and_tomorrow_events = []
 		@this_week_events = []
 		@other_events = []
 
@@ -60,8 +45,6 @@ class DocketController < ApplicationController
 			case
 			when (@days_of_this_week.include? e.date)
 				@this_week_events << e
-			when (@days_of_today_and_tomorrow.include? e.date)
-				@today_and_tomorrow_events << e
 			when (e.date > start_of_other_range)
 				@other_events << e
 			end

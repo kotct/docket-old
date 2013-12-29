@@ -2,11 +2,11 @@
 	<h1>My Docket</h1>
 </div>
 
-<h2>This week:</h2>
+<!--<h2>This week:</h2>
 <h3>Assignments</h3>
-<% if @this_week_assignments.empty? %>
+<%# if @this_week_assignments.empty? %>
 	No assignments for this week.
-<% else %>
+<%# else %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -17,21 +17,21 @@
 		</thead>
 
 		<tbody>
-			<% @this_week_assignments.sort_by(&:due_date).each do |assignment| %>
+			<%# @this_week_assignments.sort_by(&:due_date).each do |assignment| %>
 				<tr>
-					<td><%= link_to assignment.name, assignment %></td>
-					<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
-					<td><%= assignment.due_date %></td>
+					<td><%# link_to assignment.name, assignment %></td>
+					<td><%# link_to assignment.classroom.name, assignment.classroom %></td>
+					<td><%# assignment.due_date %></td>
 				</tr>
-			<% end %>
+			<%# end %>
 		</tbody>
 	</table>
-<% end %>
+<%# end %>
 
 <h3>Exams</h3>
-<% if @this_week_exams.empty? %>
+<%# if @this_week_exams.empty? %>
 	No exams for this week.
-<% else %>
+<%# else %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -42,16 +42,16 @@
 		</thead>
 
 		<tbody>
-			<% @this_week_exams.sort_by(&:date).each do |exam| %>
+			<%# @this_week_exams.sort_by(&:date).each do |exam| %>
 				<tr>
-					<td><%= link_to exam.name, exam %></td>
-					<td><%= link_to exam.classroom.name, exam.classroom %></td>
-					<td><%= exam.date %></td>
+					<td><%# link_to exam.name, exam %></td>
+					<td><%# link_to exam.classroom.name, exam.classroom %></td>
+					<td><%# exam.date %></td>
 				</tr>
-			<% end %>
+			<%# end %>
 		</tbody>
 	</table>
-<% end %>
+<%# end %>
 
 <h3>Events</h3>
 <% if @this_week_events.empty? %>
@@ -77,6 +77,9 @@
 		</tbody>
 	</table>
 <% end %>
+
+-->
+
 <!--
 <h2>Other assignments, exams, and events.</h2>
 <%# if @other_things.empty? %>

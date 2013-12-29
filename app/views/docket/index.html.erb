@@ -15,22 +15,20 @@
 				No assignments or exams.
 			<% else %>
 				<table class="table table-bordered">
-					<thead>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<% day_assignments_and_exams.each do |thing| %>
 						<tr>
-							<th>Type</th>
-							<th>Name</th>
-							<th>Class</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% day_assignments_and_exams.each do |thing| %>
-						<tr>
+							<td></td>
 							<td><%= thing.class == Assignment ? "Assignment Due" : thing.class == Exam ? "Exam to Take" : "Something" %>
 							<td><%= thing.name %></td>
 							<td><%= thing.classroom.name %></td>
 						</tr>
-						<% end %>
-					</tbody>
+					<% end %>
 				</table>
 			<% end %>
 		</div>

@@ -2,9 +2,10 @@
 	<h1>My Docket</h1>
 </div>
 
-<h2>Exams for today and tomorrow</h2>
-<% if @today_and_tomorrow_exams.empty? %>
-	No exams today or tomorrow.
+<h2>This week:</h2>
+<h3>Assignments</h3>
+<% if @this_week_assignments.empty? %>
+	No assignments for this week.
 <% else %>
 	<table class="table table-striped">
 		<thead>
@@ -16,32 +17,7 @@
 		</thead>
 
 		<tbody>
-			<% @today_and_tomorrow_exams.sort_by(&:date).each do |exam| %>
-				<tr>
-					<td><%= link_to exam.name, exam %></td>
-					<td><%= link_to exam.classroom.name, exam.classroom %></td>
-					<td><%= exam.date %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-<% end %>
-
-<h2>Assignments for today and tomorrow</h2>
-<% if @today_and_tomorrow_assignments.empty? %>
-	No assignments due today or tomorrow.
-<% else %>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Class</th>
-				<th>Due Date</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<% @today_and_tomorrow_assignments.sort_by(&:due_date).each do |assignment| %>
+			<% @this_week_assignments.sort_by(&:due_date).each do |assignment| %>
 				<tr>
 					<td><%= link_to assignment.name, assignment %></td>
 					<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
@@ -52,10 +28,60 @@
 	</table>
 <% end %>
 
-<h2>Other assignments, exams, and events.</h2>
-<% if @other_things.empty? %>
-	No other assignments or exams.
+<h3>Exams</h3>
+<% if @this_week_exams.empty? %>
+	No exams for this week.
 <% else %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Class</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @this_week_exams.sort_by(&:date).each do |exam| %>
+				<tr>
+					<td><%= link_to exam.name, exam %></td>
+					<td><%= link_to exam.classroom.name, exam.classroom %></td>
+					<td><%= exam.date %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<h3>Events</h3>
+<% if @this_week_events.empty? %>
+	No events for this week.
+<% else %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Class</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @this_week_events.sort_by(&:date).each do |event| %>
+				<tr>
+					<td><%= link_to event.name, event %></td>
+					<td><%= link_to event.classroom.name, event.classroom %></td>
+					<td><%= event.date %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+<!--
+<h2>Other assignments, exams, and events.</h2>
+<%# if @other_things.empty? %>
+	No other assignments or exams.
+<%# else %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -67,20 +93,21 @@
 		</thead>
 
 		<tbody>
-			<% @other_things.each do |assignment| %>
+			<%# @other_things.each do |assignment| %>
 				<tr>
-					<td><%= assignment.class.to_s %></td>
-					<td><%= link_to assignment.name, assignment %></td>
+					<td><%# assignment.class.to_s %></td>
+					<td><%# link_to assignment.name, assignment %></td>
 					<td>
-						<% if assignment.class == Event %>
+						<%# if assignment.class == Event %>
 							N/A
-						<% else %>
-							<%= link_to assignment.classroom.name, assignment.classroom %>
-						<% end %>
+						<%# else %>
+							<%# link_to assignment.classroom.name, assignment.classroom %>
+						<%# end %>
 					</td>
-					<td><%= relevant_date assignment %></td>
+					<td><%# relevant_date assignment %></td>
 				</tr>
-			<% end %>
+			<%# end %>
 		</tbody>
 	</table>
-<% end %>
+<%# end %>
+-->

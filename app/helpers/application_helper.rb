@@ -20,16 +20,4 @@ module ApplicationHelper
 			nil
 		end
 	end
-
-	def day_assignments(day)
-		current_user.assignments.select {|assignment| assignment.due_date == day}
-	end
-
-	def day_exams(day)
-		current_user.exams.select {|exam| exam.date == day}
-	end
-
-	def day_events(day)
-		current_user.events.select {|event| event.date == day}
-	end
 end

@@ -15,7 +15,7 @@
 				No assignments or exams.
 			<% else %>
 				<div class="row">
-					<% current_user.classes.sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
+					<% current_user.classes_with_activities_on(day).sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
 						<div class="col-md-12">
 							<b><%= classroom.course_name %></b>
 						</div>
@@ -27,9 +27,9 @@
 							<% else %>
 								<% day_things.each do |day_thing| %>
 									<% if day_thing.class == Assignment %>
-										Assignment "<%= day_thing.name %>" is due today.
+										<%= link_to day_thing.name, day_thing %> is due today.
 									<% elsif day_thing.class == Exam %>
-										Exam "<%= day_thing.name %>" is today.
+										Exam <%= link_to day_thing.name, day_thing %> is today.
 									<% else %>
 										Something bad happened.
 									<% end %>

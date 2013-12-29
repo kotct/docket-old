@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
 		self.events.select {|event| event.date == day}
 	end
 
+	def classes
+		self.classrooms
+	end
+
 	has_many :memberships
 	has_many :classrooms, :through => :memberships
 	has_many :attendances

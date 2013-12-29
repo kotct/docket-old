@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 		self.classrooms
 	end
 
-	def classes_with_assignments_on(day)
+	def classes_with_activities_on(day)
 		self.classrooms.select {|classroom| classroom.day_activities(day).count > 0}
 	end
 

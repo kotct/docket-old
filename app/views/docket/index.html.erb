@@ -14,22 +14,30 @@
 			<% if day_assignments_and_exams.count == 0 %>
 				No assignments or exams.
 			<% else %>
-				<table class="table table-bordered">
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<% day_assignments_and_exams.each do |thing| %>
-						<tr>
-							<td></td>
-							<td><%= thing.class == Assignment ? "Assignment Due" : thing.class == Exam ? "Exam to Take" : "Something" %>
-							<td><%= thing.name %></td>
-							<td><%= thing.classroom.name %></td>
-						</tr>
+				<div class="row">
+					<% current_user.classes.sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
+						<div class="col-md-12">
+							<b><%= classroom.course_name %></b>
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-md-11">
+							<% day_things = classroom.day_assignments(day) + classroom.day_exams(day) %>
+							<% if day_things.count == 0 %>
+								Nothing to do today.
+							<% else %>
+								<% day_things.each do |day_thing| %>
+									<% if day_thing.class == Assignment %>
+										Assignment "<%= day_thing.name %>" is due today.
+									<% elsif day_thing.class == Exam %>
+										Exam "<%= day_thing.name %>" is today.
+									<% else %>
+										Something bad happened.
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
 					<% end %>
-				</table>
+				</div>
 			<% end %>
 		</div>
 

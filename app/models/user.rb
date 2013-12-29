@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
 		self.classrooms
 	end
 
+	def classes_with_assignments_on(day)
+		self.classrooms.select {|classroom| classroom.day_activities(day).count > 0}
+	end
+
 	has_many :memberships
 	has_many :classrooms, :through => :memberships
 	has_many :attendances

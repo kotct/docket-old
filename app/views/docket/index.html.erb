@@ -38,8 +38,25 @@
 		</div>
 
 		<div class="col-md-3">
-			<!-- TODO: Implement. -->
-			Events.
+			<% day_events = current_user.day_events(day) %>
+			<% if day_events.count == 0 %>
+				No events.
+			<% else %>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% day_events.each do |event| %>
+						<tr>
+							<td><%= event.name %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
 		</div>
 	</div>
 </div>

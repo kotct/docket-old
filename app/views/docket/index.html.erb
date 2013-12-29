@@ -10,7 +10,7 @@
 
 	<div class="panel-body row">
 		<div class="col-md-9">
-			<% day_assignments_and_exams = day_assignments(day) + day_exams(day) %>
+			<% day_assignments_and_exams = current_user.day_assignments(day) + current_user.day_exams(day) %>
 			<% if day_assignments_and_exams.count == 0 %>
 				No assignments or exams.
 			<% else %>

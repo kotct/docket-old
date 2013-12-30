@@ -37,7 +37,7 @@
 				<div class="row">
 					<% current_user.classes_with_activities_on(day).sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
 						<div class="col-md-12">
-							<b><%= link_to classroom.course_name, classroom_path(classroom) %></b>
+							<b><%= classroom.course_name %></b>
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-11">

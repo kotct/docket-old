@@ -36,7 +36,7 @@
 					<div class="col-xs-12"><b>No exams.</b></div>
 				<% else %>
 					<div class="col-xs-12"><b>Exams:</b></div>
-					<% current_user.classes_with_exams_on(day).sort! { |first, last| first.period <=> last.period }.each do |classroom| %>
+					<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
 						<div class="col-xs-0"><!-- Spacing --></div>
 						<div class="col-xs-12">
 							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %>:</b>
@@ -59,10 +59,10 @@
 					<div class="col-xs-12"><b>No assignments.</b></div>
 				<% else %>
 					<div class="col-xs-12"><b>Assignments:</b></div>
-					<% current_user.classes_with_assignments_on(day).sort! { |first, last| first.period <=> last.period }.each do |classroom| %>
+					<% sort_by_period(current_user.classes_with_assignments_on(day)).each do |classroom| %>
 						<div class="col-xs-0"><!-- Spacing --></div>
 						<div class="col-xs-12">
-							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %></b>
+							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %>:</b>
 						</div>
 						<% classroom_day_assignments = classroom.day_assignments(day) %>
 						<% classroom_day_assignments.each do |assignment| %>

@@ -41,15 +41,15 @@
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-11">
-							<% day_things = classroom.day_assignments(day) + classroom.day_exams(day) %>
-							<% if day_things.count == 0 %>
+							<% day_activities = classroom.day_assignments(day) + classroom.day_exams(day) %>
+							<% if day_activities.count == 0 %>
 								Nothing to do today.
 							<% else %>
-								<% day_things.each do |day_thing| %>
-									<% if day_thing.class == Assignment %>
-										<%= link_to day_thing.name, day_thing %> is due today.
-									<% elsif day_thing.class == Exam %>
-										Exam <%= link_to day_thing.name, day_thing %> is today.
+								<% day_activities.each do |day_activity| %>
+									<% if day_activity.class == Assignment %>
+										<%= link_to day_activity.name, day_activity %> is due today.
+									<% elsif day_activity.class == Exam %>
+										Exam <%= link_to day_activity.name, day_activity %> is today.
 									<% else %>
 										Something bad happened.
 									<% end %>

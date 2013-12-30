@@ -46,20 +46,13 @@
 			<% if day_events.count == 0 %>
 				No events.
 			<% else %>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Name</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% day_events.each do |event| %>
-						<tr>
-							<td><%= event.name %></td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
+				<div class="row">
+				<% day_events.each do |event| %>
+					<div class="col-md-12">
+						<%= event.name %> @ <%= event.date.strftime("%H:%M") %>
+					</div>
+				<% end %>
+				</div>
 			<% end %>
 		</div>
 	</div>

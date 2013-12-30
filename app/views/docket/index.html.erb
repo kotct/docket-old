@@ -127,7 +127,9 @@
 					<div class="row">
 						<% day_events.each do |event| %>
 							<div class="col-md-12">
-								<%= link_to event.name, event %> @ <%= event.date.strftime("%H:%M") %>
+								<%= event.date.strftime("%l:%M %p") %>
+								-
+								<%= link_to event.name, event %>
 							</div>
 						<% end %>
 					</div>

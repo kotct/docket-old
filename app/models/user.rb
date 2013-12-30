@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 	end
 
 	def day_events(day)
-		self.events.select {|event| event.date == day}
+		self.events.select {|event| event.date > day.beginning_of_day && event.date < day.end_of_day}.sort! {|first,last| first.date <=> last.date}
 	end
 
 	def classes

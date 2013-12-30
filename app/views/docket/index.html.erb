@@ -41,22 +41,38 @@
 							<div class="col-md-12">
 								<b>Exams</b>
 							</div>
+							
+							<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
+								<% class_exams = classroom.day_exams(day) %>
+								
+								<% if class_exams.count == 1 %>
+									<div class="col-md-1"></div>
 
-							<div class="col-md-1"></div>
+									<% class_exam = class_exams.first %>
 
-							<div class="col-md-11">
-								<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
-									<% if classroom.day_exams(day).count == 1 %>
+									<div class="col-md-11">
 										<%= link_to classroom.course_name, classroom_path(classroom) %>
 
 										-
 
-										<%= link_to classroom.day_exams(day).first.name, exam_path(classroom.day_exams(day).first) %>
-									<% else %>
-										
+										<%= link_to class_exam.name, exam_path(class_exam) %>
+									</div>
+								<% elsif class_exams.count > 0 %>
+									<div class="col-md-1"></div>
+
+									<div class="col-md-11">
+										<%= link_to classroom.course_name, classroom_path(classroom) %>
+									</div>
+									
+									<% class_exams.each do |exam| %>
+										<div class="col-md-2"></div>
+
+										<div class="col-md-10">
+											<%= link_to exam.name, exam_path(exam) %>
+										</div>
 									<% end %>
 								<% end %>
-							</div>
+							<% end %>
 						</div>
 					<% end %>
 
@@ -67,24 +83,38 @@
 							<div class="col-md-12">
 								<b>Assignments</b>
 							</div>
+							
+							<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
+								<% class_assignments = classroom.day_assignments(day) %>
+								
+								<% if class_assignments.count == 1 %>
+									<div class="col-md-1"></div>
+									
+									<% class_assignment = class_assignments.first %>
 
-							<div class="col-md-1"></div>
-
-							<div class="col-md-11">
-								<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
-									<% class_assignments = classroom.day_assignments(day) %>
-									<% if class_assignments.count == 1 %>
-										<% class_assignment = class_assignments.first %>
+									<div class="col-md-11">
 										<%= link_to classroom.course_name, classroom_path(classroom) %>
 
 										-
 
 										<%= link_to class_assignment.name, assignment_path(class_assignment) %>
-									<% else %>
-										
+									</div>
+								<% elsif class_assignments.count > 0 %>
+									<div class="col-md-1"></div>
+
+									<div class="col-md-11">
+										<%= link_to classroom.course_name, classroom_path(classroom) %>
+									</div>
+									
+									<% class_assignments.each do |assignment| %>
+										<div class="col-md-2"></div>
+
+										<div class="col-md-10">
+											<%= link_to assignment.name, exam_path(assignment) %>
+										</div>
 									<% end %>
 								<% end %>
-							</div>
+							<% end %>
 						</div>
 					<% end %>
 				<% end %>

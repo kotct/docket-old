@@ -27,6 +27,26 @@ class User < ActiveRecord::Base
 		ret
 	end
 
+	def day_assignments(day)
+		self.assignments.select {|assignment| assignment.due_date == day}
+	end
+
+	def day_exams(day)
+		self.exams.select {|exam| exam.date == day}
+	end
+
+	def day_events(day)
+		self.events.select {|event| event.date > day.beginning_of_day && event.date < day.end_of_day}.sort! {|first,last| first.date <=> last.date}
+	end
+
+	def classes
+		self.classrooms
+	end
+
+	def classes_with_activities_on(day)
+		self.classrooms.select {|classroom| classroom.day_activities(day).count > 0}
+	end
+
 	has_many :memberships
 	has_many :classrooms, :through => :memberships
 	has_many :attendances

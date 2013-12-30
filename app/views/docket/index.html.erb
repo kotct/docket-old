@@ -3,106 +3,77 @@
 </div>
 
 <% @days_of_this_week.each do |day| %>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<div class="row">
-				<div class="col-md-8">
-					<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
-				</div>
-
-				<% day_assignments = current_user.day_assignments(day) %>
-				<% day_exams = current_user.day_exams(day) %>
-				<% day_assignments_and_exams = day_assignments + day_exams %>
-				<% day_events = current_user.day_events(day) %>
-
-				<% day_items = day_assignments + day_exams + day_events %>
-
-				<div class="col-md-4">
-					<span class="badge"><%= day_assignments.count %></span>
-					<span class="badge"><%= day_exams.count %></span>
-					<span class="badge"><%= day_events.count %></span>
-
-					~
-
-					<span class="badge"><%= day_items.count %></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="panel-body row">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="row">
 			<div class="col-md-8">
-				<% if day_assignments_and_exams.count == 0 %>
-					No assignments or exams today!
-				<% else %>
-					<% if day_exams.count == 0 %>
-						No exams today!
-					<% else %>
-						<div class="row">
-							<div class="col-md-12">
-								<b>Exams</b>
-							</div>
-
-							<div class="col-md-1"></div>
-
-							<div class="col-md-11">
-								<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
-									<% if classroom.day_exams(day).count == 1 %>
-										<%= link_to classroom.course_name, classroom_path(classroom) %>
-
-										-
-
-										<%= link_to classroom.day_exams(day).first.name, exam_path(classroom.day_exams(day).first) %>
-									<% else %>
-										
-									<% end %>
-								<% end %>
-							</div>
-						</div>
-					<% end %>
-
-					<% if day_assignments.count == 0 %>
-						No assignments today!
-					<% else %>
-						<div class="row">
-							<div class="col-md-12">
-								<b>Assignments</b>
-							</div>
-
-							<div class="col-md-1"></div>
-
-							<div class="col-md-11">
-								<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
-									<% class_assignments = classroom.day_assignments(day) %>
-									<% if class_assignments.count == 1 %>
-										<% class_assignment = class_assignments.first %>
-										<%= link_to classroom.course_name, classroom_path(classroom) %>
-
-										-
-
-										<%= link_to class_assignment.name, assignment_path(class_assignment) %>
-									<% else %>
-										
-									<% end %>
-								<% end %>
-							</div>
-						</div>
-					<% end %>
-				<% end %>
+				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
 			</div>
+
+			<% day_assignments = current_user.day_assignments(day) %>
+			<% day_exams = current_user.day_exams(day) %>
+			<% day_assignments_and_exams = day_assignments + day_exams %>
+			<% day_events = current_user.day_events(day) %>
+
+			<% day_items = day_assignments + day_exams + day_events %>
 
 			<div class="col-md-4">
-				<% if day_events.count == 0 %>
-					No events.
-				<% else %>
-					<div class="row">
-						<% day_events.each do |event| %>
-							<div class="col-md-12">
-								<%= link_to event.name, event %> @ <%= event.date.strftime("%H:%M") %>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
+				<span class="badge"><%= day_assignments.count %></span>
+				<span class="badge"><%= day_exams.count %></span>
+				<span class="badge"><%= day_events.count %></span>
+
+				~
+
+				<span class="badge"><%= day_items.count %></span>
 			</div>
 		</div>
 	</div>
+
+	<div class="panel-body row">
+		<div class="col-md-8">
+			<% if day_assignments_and_exams.count == 0 %>
+				No assignments or exams.
+			<% else %>
+				<div class="row">
+					<% current_user.classes_with_activities_on(day).sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
+						<div class="col-md-12">
+							<b><%= link_to classroom.course_name, classroom_path(classroom) %></b>
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-md-11">
+							<% day_activities = classroom.day_assignments(day) + classroom.day_exams(day) %>
+							<% if day_activities.count == 0 %>
+								Nothing to do today.
+							<% else %>
+								<% day_activities.each do |day_activity| %>
+									<% if day_activity.class == Assignment %>
+										<%= link_to day_activity.name, day_activity %> is due today.
+									<% elsif day_activity.class == Exam %>
+										Exam <%= link_to day_activity.name, day_activity %> is today.
+									<% else %>
+										Something bad happened.
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="col-md-4">
+			<% if day_events.count == 0 %>
+				No events.
+			<% else %>
+				<div class="row">
+				<% day_events.each do |event| %>
+					<div class="col-md-12">
+						<%= link_to event.name, event %> @ <%= event.date.strftime("%H:%M") %>
+					</div>
+				<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 <% end %>

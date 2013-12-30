@@ -2,21 +2,15 @@ class UsersController < ApplicationController
 	load_and_authorize_resource
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-	def ensure_admin
-		redirect_to root_path, alert: "You don't have permission to do that." unless admin?
-	end
-
 	# GET /users
 	# GET /users.json
 	def index
-		ensure_admin
 		@users = User.all
 	end
 
 	# GET /users/1
 	# GET /users/1.json
 	def show
-		ensure_admin unless current_user && @user.id == current_user.id
 	end
 
 	# GET /users/new
@@ -26,7 +20,6 @@ class UsersController < ApplicationController
 
 	# GET /users/1/edit
 	def edit
-		ensure_admin unless current_user && @user.id == current_user.id
 	end
 
 	# POST /users
@@ -66,8 +59,6 @@ class UsersController < ApplicationController
 	# DELETE /users/1
 	# DELETE /users/1.json
 	def destroy
-		ensure_admin unless current_user && @user.id == current_user.id
-
 		@user.destroy
 		respond_to do |format|
 			format.html { redirect_to users_url }
@@ -75,14 +66,14 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# GET /users/1/activity
 	def activity
 		@user = User.find(params[:id])
-		ensure_admin unless current_user && @user.id == current_user.id
 		@activities = PublicActivity::Activity.where(:owner_id => @user.id).order("created_at desc")
 	end
 
+	# GET /users/activity
 	def index_activities
-		ensure_admin
 		@activities = PublicActivity::Activity.order("created_at desc")
 	end
 

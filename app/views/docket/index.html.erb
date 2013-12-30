@@ -37,7 +37,7 @@
 				<div class="row">
 					<% current_user.classes_with_activities_on(day).sort! {|first, last| first.period <=> last.period }.each do |classroom| %>
 						<div class="col-md-12">
-							<b><%= classroom.course_name %></b>
+							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %></b>
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-11">
@@ -47,9 +47,9 @@
 							<% else %>
 								<% day_things.each do |day_thing| %>
 									<% if day_thing.class == Assignment %>
-										<%= link_to day_thing.name, day_thing %> is due today.
+										<%= link_to day_thing.name, day_thing, class: "link-no-underline" %> is due today.
 									<% elsif day_thing.class == Exam %>
-										Exam <%= link_to day_thing.name, day_thing %> is today.
+										Exam <%= link_to day_thing.name, day_thing, class: "link-no-underline" %> is today.
 									<% else %>
 										Something bad happened.
 									<% end %>
@@ -68,7 +68,7 @@
 				<div class="row">
 				<% day_events.each do |event| %>
 					<div class="col-md-12">
-						<%= link_to event.name, event %> @ <%= event.date.strftime("%H:%M") %>
+						<%= link_to event.name, event, class: "link-no-underline" %> @ <%= event.date.strftime("%H:%M") %>
 					</div>
 				<% end %>
 				</div>

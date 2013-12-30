@@ -1,4 +1,5 @@
 class DocketController < ApplicationController
+	skip_authorization_check
 	def index
 		redirect_to log_in_path, notice: "Please log in to use Docket." unless current_user
 

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+	skip_authorization_check
+
 	def new
 		if current_user
 			redirect_to root_path, :notice => "You are already logged in!"

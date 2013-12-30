@@ -1,4 +1,5 @@
 class ExamsController < ApplicationController
+	load_and_authorize_resource
 	before_action :set_exam, only: [:show, :edit, :update, :destroy]
 
 	# GET /exams

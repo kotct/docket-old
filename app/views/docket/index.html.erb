@@ -39,7 +39,7 @@
 						<div class="col-md-12">
 							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %></b>
 						</div>
-						<div class="col-md-1"></div>
+						<div class="col-md-1"><!-- Spacing --></div>
 						<div class="col-md-11">
 							<% day_things = classroom.day_assignments(day) + classroom.day_exams(day) %>
 							<% if day_things.count == 0 %>

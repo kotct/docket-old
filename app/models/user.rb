@@ -28,15 +28,15 @@ class User < ActiveRecord::Base
 	end
 
 	def day_assignments(day)
-		self.assignments.select {|assignment| assignment.due_date == day}
+		self.assignments.select { |assignment| assignment.due_date == day }
 	end
 
 	def day_exams(day)
-		self.exams.select {|exam| exam.date == day}
+		self.exams.select { |exam| exam.date == day }
 	end
 
 	def day_events(day)
-		self.events.select {|event| event.date > day.beginning_of_day && event.date < day.end_of_day}.sort! {|first,last| first.date <=> last.date}
+		self.events.select { |event| event.date > day.beginning_of_day && event.date < day.end_of_day}.sort! {|first,last| first.date <=> last.date }
 	end
 
 	def classes
@@ -44,7 +44,15 @@ class User < ActiveRecord::Base
 	end
 
 	def classes_with_activities_on(day)
-		self.classrooms.select {|classroom| classroom.day_activities(day).count > 0}
+		self.classrooms.select { |classroom| classroom.day_activities(day).count > 0 }
+	end
+
+	def classes_with_assignments_on(day)
+		self.classrooms.select { |classroom| classroom.day_assignments(day).count > 0 }
+	end
+
+	def classes_with_exams_on(day)
+		self.classrooms.select { |classroom| classroom.day_exams(day).count > 0 }
 	end
 
 	has_many :memberships

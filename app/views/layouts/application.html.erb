@@ -23,11 +23,11 @@
 				<%= navbar_item "Classes", classrooms_path %>
 			<% end %>
 			<%= navbar_group :align => "right" do %>
-				<%= navbar_text(current_user ? "Logged in as " + current_user.name : "Not logged in") %>
+				<%= navbar_text current_user ? "Logged in as " + current_user.name : "Not logged in" %>
 				<% if current_user %>
-					<%= navbar_item("Log Out", log_out_path) %>
+					<%= navbar_item "Log Out", log_out_path %>
 				<% else %>
-					<%= navbar_item("Sign Up", new_user_path) %>
+					<%= navbar_item "Sign Up", new_user_path %>
 				<% end %>
 			<% end %>
 		<% end %>
@@ -46,13 +46,34 @@
 				</div>
 			<% end %>
 			<div class="row">
-				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<div class="list-group">
+						<%= link_to "Manage account", current_user, class: "list-group-item " + (request.path == user_path(current_user) ? "active" : "") if current_user %>
+						<a href="#" class="list-group-item">Another link</a>
+						<a href="#" class="list-group-item">Third link</a>
+					</div>
+				</div>
 
 				<div class="col-md-8">
 					<%= yield %>
 				</div>
 
-				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Schedule
+						</div>
+						<div class="list-group">
+							<% if !current_user || current_user.classrooms.empty? %>
+								<div class="list-group-item">No classes</li>
+							<% else %>
+								<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
+									<%= link_to classroom.course.name, classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</article>
 	</body>

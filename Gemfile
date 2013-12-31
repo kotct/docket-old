@@ -64,3 +64,7 @@ gem 'jquery-turbolinks'
 gem 'indefinite_article', '~> 0.2.0'
 
 gem 'pg'
+
+# Herokuness
+gem 'rails_12factor', group: :production
+

@@ -60,7 +60,7 @@
 								<div class="list-group-item">No classes</li>
 							<% else %>
 								<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-									<%= link_to classroom.course.name, classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
+									<%= link_to (content_tag(:span, classroom.period, class: "badge") + classroom.course.name), classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
 								<% end %>
 							<% end %>
 						</ul>

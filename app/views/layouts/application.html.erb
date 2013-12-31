@@ -46,19 +46,11 @@
 				</div>
 			<% end %>
 			<div class="row">
-				<div class="col-md-2">
-					<div class="list-group">
-						<%= link_to "Manage account", current_user, class: "list-group-item " + (request.path == user_path(current_user) ? "active" : "") if current_user %>
-						<a href="#" class="list-group-item">Another link</a>
-						<a href="#" class="list-group-item">Third link</a>
-					</div>
-				</div>
-
-				<div class="col-md-8">
+				<div class="col-md-7 col-md-offset-1">
 					<%= yield %>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-md-2 col-md-offset-1 visible-md visible-lg">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							Schedule

@@ -24,3 +24,6 @@
 
 # Hide any patches we have in our trees
 *.patch
+
+# Ignore compiled assets (from production)
+public/assets/

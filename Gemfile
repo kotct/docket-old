@@ -44,7 +44,7 @@ gem 'bcrypt-ruby'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'thin'
+gem 'unicorn'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'rails_bootstrap_navbar', '~> 1.0.1'
 gem 'rspec-rails', :group => [:test, :development]

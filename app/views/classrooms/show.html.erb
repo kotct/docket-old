@@ -11,7 +11,7 @@
 <p>
 	<strong>Members:</strong>
 	<% @classroom.users.each do |student| %>
-		<%= link_to student.name, student %>
+		<%= link_to student.name, student, class: "link-no-underline badge" %>
 	<% end %>
 </p>
 

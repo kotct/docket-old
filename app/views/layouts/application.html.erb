@@ -47,28 +47,42 @@
 					<%= flash[:alert] %>
 				</div>
 			<% end %>
-			<div class="row">
-				<div class="col-md-7 col-md-offset-1">
-					<%= yield %>
-				</div>
 
-				<div class="col-md-2 col-md-offset-1 visible-md visible-lg sidebar-col">
-					<div class="panel panel-default" data-spy="affix" data-clampedwidth=".sidebar-col">
-						<div class="panel-heading">
-							Schedule
-						</div>
-						<div class="list-group">
-							<% if !current_user || current_user.classrooms.empty? %>
-								<div class="list-group-item">No classes</li>
-							<% else %>
-								<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-									<%= link_to (content_tag(:span, classroom.period, class: "badge") + classroom.course.name), classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
+			<% if current_user %>
+				<div class="row">
+					<div class="col-md-7 col-md-offset-1">
+						<%= yield %>
+					</div>
+
+					<div class="col-md-2 col-md-offset-1 visible-md visible-lg sidebar-col">
+						<div class="panel panel-default" data-spy="affix" data-clampedwidth=".sidebar-col">
+							<div class="panel-heading">
+								Schedule
+							</div>
+							
+							<div class="list-group">
+								<% if !current_user || current_user.classrooms.empty? %>
+									<div class="list-group-item">No classes</li>
+								<% else %>
+									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
+										<%= link_to (content_tag(:span, classroom.period, class: "badge") + classroom.course.name), classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
+									<% end %>
 								<% end %>
-							<% end %>
 						</ul>
 					</div>
 				</div>
 			</div>
+<% else %>
+	<div class="row">
+		<div class="col-md-2"></div>
+
+		<div class="col-md-8">
+			<%= yield %>
+		</div>
+
+		<div class="col-md-2"></div>
+	</div>
+<% end %>
 		</article>
 	</body>
 </html>

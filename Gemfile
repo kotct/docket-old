@@ -62,3 +62,6 @@ gem 'jquery-turbolinks'
 
 # Handle indefinite articles correctly
 gem 'indefinite_article', '~> 0.2.0'
+
+# Permissions
+gem 'cancan'

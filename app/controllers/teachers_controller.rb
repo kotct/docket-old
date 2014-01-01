@@ -1,13 +1,14 @@
 class TeachersController < ApplicationController
+	load_and_authorize_resource
 	before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
 	# GET /teachers
 	# GET /teachers.json
 	def index
 		if params[:q]
-			@teachers = Teacher.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%")
+			@teachers = Teacher.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%").sort_by(&:last_name)
 		else
-			@teachers = Teacher.all
+			@teachers = Teacher.all.sort_by(&:last_name)
 		end
 		respond_to do |format|
 			format.html

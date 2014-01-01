@@ -20,9 +20,9 @@
 					<div class="btn-group btn-group-xs">
 						<%= link_to "Show", classroom, class: "btn btn-primary btn-xs" %>
 						<% if classroom.users.include? current_user %>
-							<%= link_to "Leave", leave_classroom_path(classroom), class: "btn btn-danger" %>
+							<%= link_to "Leave", leave_classroom_path(classroom) + "?redirect_url=" + classrooms_path, class: "btn btn-danger" %>
 						<% else %>
-							<%= link_to "Join", join_classroom_path(classroom), class: "btn btn-success" %>
+							<%= link_to "Join", join_classroom_path(classroom) + "?redirect_url=" + classrooms_path, class: "btn btn-success" %>
 						<% end %>
 					</div>
 				</td>

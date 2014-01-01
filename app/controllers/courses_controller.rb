@@ -1,13 +1,14 @@
 class CoursesController < ApplicationController
+	load_and_authorize_resource
 	before_action :set_course, only: [:show, :edit, :update, :destroy]
 
 	# GET /courses
 	# GET /courses.json
 	def index
 		if params[:q]
-			@courses = Course.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%")
+			@courses = Course.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%").sort_by(&:name)
 		else
-			@courses = Course.all
+			@courses = Course.all.sort_by(&:name)
 		end
 		respond_to do |format|
 			format.html

@@ -5,9 +5,9 @@ class TeachersController < ApplicationController
 	# GET /teachers.json
 	def index
 		if params[:q]
-			@teachers = Teacher.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%")
+			@teachers = Teacher.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%").sort_by(&:last_name)
 		else
-			@teachers = Teacher.all
+			@teachers = Teacher.all.sort_by(&:last_name)
 		end
 		respond_to do |format|
 			format.html

@@ -5,9 +5,9 @@ class CoursesController < ApplicationController
 	# GET /courses.json
 	def index
 		if params[:q]
-			@courses = Course.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%")
+			@courses = Course.where("LOWER(name) LIKE LOWER(?)", "%" + params[:q] + "%").sort_by(&:name)
 		else
-			@courses = Course.all
+			@courses = Course.all.sort_by(&:name)
 		end
 		respond_to do |format|
 			format.html

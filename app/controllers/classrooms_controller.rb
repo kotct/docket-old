@@ -4,7 +4,13 @@ class ClassroomsController < ApplicationController
 	# GET /classrooms
 	# GET /classrooms.json
 	def index
-		@classrooms = Classroom.all
+		@classrooms = Classroom.all.sort do |a, b|
+			if a.period == b.period
+				a.course.name <=> b.course.name
+			else
+				a.period <=> b.period
+			end
+		end
 	end
 
 	# GET /classrooms/1

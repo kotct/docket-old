@@ -1,10 +1,17 @@
 class ClassroomsController < ApplicationController
+	load_and_authorize_resource
 	before_action :set_classroom, only: [:show, :edit, :update, :destroy]
 
 	# GET /classrooms
 	# GET /classrooms.json
 	def index
-		@classrooms = Classroom.all
+		@classrooms = Classroom.all.sort do |a, b|
+			if a.period == b.period
+				a.course.name <=> b.course.name
+			else
+				a.period <=> b.period
+			end
+		end
 	end
 
 	# GET /classrooms/1
@@ -72,7 +79,7 @@ class ClassroomsController < ApplicationController
 		@membership.classroom_id = @classroom.id
 		@membership.user_id = params[:user_id]
 		if @membership.save
-			redirect_to @classroom, notice: "Joined!"
+			redirect_to params[:redirect_url] || @classroom, notice: "Joined!"
 		else
 			redirect_to @classroom, alert: "You are already a member of this class!"
 		end
@@ -86,7 +93,7 @@ class ClassroomsController < ApplicationController
 
 		@membership = Membership.where("user_id = ? AND classroom_id = ?", params[:user_id], @classroom.id).first
 		if @membership.destroy
-			redirect_to @classroom, notice: "Left!"
+			redirect_to params[:redirect_url] || @classroom, notice: "Left!"
 		else
 			redirect_to root_path, alert: "WTF did you just try to do."
 		end

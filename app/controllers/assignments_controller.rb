@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+	load_and_authorize_resource
 	before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
 	# GET /assignments
@@ -15,6 +16,7 @@ class AssignmentsController < ApplicationController
 	# GET /assignments/new
 	def new
 		@assignment = Assignment.new
+		@assignment.classroom_id = params[:classroom_id]
 	end
 
 	# GET /assignments/1/edit

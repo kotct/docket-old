@@ -3,11 +3,11 @@
 </div>
 
 <% @days_of_this_week.each do |day| %>
-<div class="panel panel-default">
+<div class="panel panel-default<%= " panel-highlight" if day == Date.today %>">
 	<div class="panel-heading">
 		<div class="row">
 			<div class="col-md-8">
-				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
+				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b><%= " (today)" if day == Date.today %>
 			</div>
 
 			<% day_assignments = current_user.day_assignments(day) %>

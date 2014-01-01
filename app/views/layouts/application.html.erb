@@ -62,27 +62,23 @@
 							
 							<div class="list-group">
 								<% if !current_user || current_user.classrooms.empty? %>
-									<div class="list-group-item">No classes</li>
+									<div class="list-group-item">No classes</div>
 								<% else %>
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
 										<%= link_to (content_tag(:span, classroom.period, class: "badge") + classroom.course.name), classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
 									<% end %>
 								<% end %>
-						</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-<% else %>
-	<div class="row">
-		<div class="col-md-2"></div>
-
-		<div class="col-md-8">
-			<%= yield %>
-		</div>
-
-		<div class="col-md-2"></div>
-	</div>
-<% end %>
+			<% else %>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<%= yield %>
+					</div>
+				</div>
+			<% end %>
 		</article>
 	</body>
 </html>

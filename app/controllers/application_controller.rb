@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	check_authorization
 	include PublicActivity::StoreController
 
 	# Prevent CSRF attacks by raising an exception.
@@ -14,7 +15,6 @@ class ApplicationController < ActionController::Base
 			nil
 		end
 	end
-
 	hide_action :current_user
 
 	def admin?
@@ -28,4 +28,16 @@ class ApplicationController < ActionController::Base
 	def check_for_user_if_not_session_controller
 		check_for_user unless (params[:controller] == "sessions" || params[:controller] == "users")
 	end
+
+	rescue_from CanCan::AccessDenied do |exception|
+		Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}" if WE_SHALL_DEBUG
+		redirect_to root_url, :alert => exception.message
+	end
+
+	before_filter do
+		resource = controller_name.singularize.to_sym
+		method = "#{resource}_params"
+		params[resource] &&= send(method) if respond_to?(method, true)
+	end
+
 end

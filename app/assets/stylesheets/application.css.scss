@@ -125,3 +125,12 @@ body {
 	margin-top: 8px;
 	margin-bottom: 8px;
 }
+
+.navbar-inverse {
+	background-color: #303030;
+	border-color: #101010;
+
+	a, p, li {
+		color: #a0a0a0 !important;
+	}
+}

@@ -6,6 +6,30 @@
 	<%= @user.name %> will graduate in <%= @user.graduation_year %>. Email them at <%= mail_to @user.email %>.
 </p>
 
+<h3>
+	Schedule
+</h3>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Period</th>
+			<th>Course Name</th>
+			<th>Teacher</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @user.classrooms.sort_by(&:period).each do |classroom| %>
+			<tr>
+				<td><%= classroom.period %></td>
+				<td><%= link_to classroom.course_name, course_path(classroom.course) %></td>
+				<td><%= link_to classroom.teacher_name, teacher_path(classroom.teacher) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
 <div class="btn-group">
 	<%= link_to 'Activity', activity_user_path(@user), class: "btn btn-primary" %>
 	<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-success" %>

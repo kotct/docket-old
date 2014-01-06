@@ -10,11 +10,20 @@ class ApplicationController < ActionController::Base
 
 	def current_user
 		if session["current_user_id"]
-			User.find session["current_user_id"]
+			begin
+				user_find = User.find session["current_user_id"]
+			rescue Exception => e
+				puts "Exception occurred (#{e.message})"
+
+				nil
+			end
+
+			user_find
 		else
 			nil
 		end
 	end
+
 	hide_action :current_user
 
 	def admin?
@@ -39,5 +48,4 @@ class ApplicationController < ActionController::Base
 		method = "#{resource}_params"
 		params[resource] &&= send(method) if respond_to?(method, true)
 	end
-
 end

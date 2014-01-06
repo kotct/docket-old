@@ -11,6 +11,11 @@ Docket::Application.routes.draw do
 	resources :teachers
 	resources :sessions
 
+	# doesn't work because configuration is singular and rails complains about
+	# not being able to find ConfigurationsController (throws an
+	# UninitializedConstant exception)
+	#resource :configuration
+
 	resources :classrooms do
 		member do
 			get 'join'

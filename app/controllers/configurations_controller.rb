@@ -1,4 +1,4 @@
-class ConfigurationController < ApplicationController
+class ConfigurationsController < ApplicationController
   def show
   end
 

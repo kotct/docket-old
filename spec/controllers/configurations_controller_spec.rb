@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ConfigurationController do
+describe ConfigurationsController do
 
   describe "GET 'show'" do
     it "returns http success" do

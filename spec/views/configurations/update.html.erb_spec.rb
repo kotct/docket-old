@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Configuration do
+describe "configurations/update.html.erb" do
   pending "add some examples to (or delete) #{__FILE__}"
 end

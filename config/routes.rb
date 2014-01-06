@@ -1,4 +1,7 @@
 Docket::Application.routes.draw do
+  get "configurations/show"
+  get "configurations/edit"
+  get "configurations/update"
 	get "configuration/show"
 	get "configuration/edit"
 	get "configuration/update"

@@ -15,7 +15,15 @@ module ApplicationHelper
 
 	def current_user
 		if session["current_user_id"]
-			User.find session["current_user_id"]
+			begin
+				user_find = User.find session["current_user_id"]
+			rescue Exception => e
+				puts "Exception occurred (#{e.message})"
+
+				nil
+			end
+
+			user_find
 		else
 			nil
 		end

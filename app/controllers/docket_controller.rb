@@ -1,6 +1,4 @@
 class DocketController < ApplicationController
-	include ApplicationHelper
-	
 	skip_authorization_check
 
 	def index
@@ -55,7 +53,7 @@ class DocketController < ApplicationController
 		end
 
 		@other_things = (@other_assignments + @other_exams + @other_events).sort do |thing1, thing2|
-			relevant_date(thing1) <=> relevant_date(thing2)
+			view_context.relevant_date(thing1) <=> view_context.relevant_date(thing2)
 		end
 	end
 end

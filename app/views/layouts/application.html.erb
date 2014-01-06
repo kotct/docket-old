@@ -17,7 +17,7 @@
 	</head>
 
 	<body>
-		<%= navbar :brand => "My Docket", :brand_link => root_url, :fixed => :top, class: "navbar-inverse" do %>
+		<%= navbar :brand => "My Docket", :brand_link => root_url, :fixed => :top, :inverse => true do %>
 			<%= navbar_group :class => "foo", :id => "menu" do %>
 				<% if current_user %>
 					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>
@@ -62,7 +62,7 @@
 							<div class="panel-heading">
 								Schedule
 							</div>
-							
+
 							<div class="list-group">
 								<% if !current_user || current_user.classrooms.empty? %>
 									<div class="list-group-item">No classes</div>

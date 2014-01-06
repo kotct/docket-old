@@ -6,10 +6,10 @@ class ClassroomsController < ApplicationController
 	# GET /classrooms.json
 	def index
 		@classrooms = Classroom.all.sort do |a, b|
-			if a.period == b.period
-				a.course.name <=> b.course.name
-			else
+			if a.course.name == b.course.name
 				a.period <=> b.period
+			else
+				a.course.name <=> b.course.name
 			end
 		end
 	end

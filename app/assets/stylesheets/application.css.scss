@@ -131,6 +131,10 @@ body {
 	border-color: #101010;
 
 	a, p, li {
-		color: #a0a0a0 !important;
+		color: #a0a0a0;
+	}
+
+	a :hover {
+		color: #f0f0f0;
 	}
 }

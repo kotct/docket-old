@@ -18,7 +18,7 @@
 
 	<body>
 		<%= navbar brand: "My Docket", brand_link: root_url, fixed: :top, inverse: true do %>
-			<%= navbar_group :class => "foo", :id => "menu" do %>
+			<%= navbar_group class: "foo", id: "menu" do %>
 				<% if current_user %>
 					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>
 				<% end %>
@@ -27,7 +27,7 @@
 				<%= navbar_item "Courses", courses_path %>
 				<%= navbar_item "Classes", classrooms_path %>
 			<% end %>
-			<%= navbar_group :align => "right" do %>
+			<%= navbar_group align: "right" do %>
 				<%= navbar_text current_user ? "Logged in as " + current_user.name : "Not logged in" %>
 				<% if current_user %>
 					<%= navbar_item "Log Out", log_out_path %>

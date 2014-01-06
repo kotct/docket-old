@@ -17,7 +17,7 @@
 	</head>
 
 	<body>
-		<%= navbar :brand => "My Docket", :brand_link => root_url, :fixed => :top, :inverse => true do %>
+		<%= navbar brand: "My Docket", brand_link: root_url, fixed: :top, inverse: true do %>
 			<%= navbar_group :class => "foo", :id => "menu" do %>
 				<% if current_user %>
 					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>

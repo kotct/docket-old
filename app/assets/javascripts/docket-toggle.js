@@ -8,9 +8,6 @@ function docket_collapse_toggle(day_tag)
 	var icon_future_class_name = collapsed ? "glyphicon-chevron-up" : "glyphicon-chevron-down";
 
 	var icon_classes = icon.className.split(" ");
-
-	console.log(icon_classes);
-
 	var new_icon_classes = [];
 
 	icon_classes.map(function(cls)

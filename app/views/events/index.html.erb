@@ -6,7 +6,6 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Description</th>
 			<th>Date</th>
 			<th>Actions</th>
 		</tr>
@@ -16,7 +15,6 @@
 		<% @events.each do |event| %>
 			<tr>
 				<td><%= link_to event.name, event %></td>
-				<td><%= event.description %></td>
 				<td><%= event.date %></td>
 				<td>
 					<div class="btn-group btn-group-xs">
@@ -31,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path, :class => "btn btn-success" %>

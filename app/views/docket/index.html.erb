@@ -29,10 +29,7 @@
 			</div>
 
 			<div class="col-xs-1">
-				<a class="docket-collapsing-div-control-button pull-right"
-				   onclick="docket_collapse_toggle(<%= "\"" + day.iso8601 + "\"" %>)">
-					<%= generate_glyphicon("docket-collapsing-indicator-image", day_is_collapsed ? "chevron-down" : "chevron-up") %>
-				</a>
+				<span class="docket-collapsing-indicator-image pull-right glyphicon glyphicon-<%= day_is_collapsed ? "chevron-down" : "chevron-up" %>" onclick="docket_collapse_toggle(<%= "\"#{day.iso8601}\"" %>)"></span>
 			</div>
 		</div>
 	</div>

@@ -9,12 +9,12 @@ function docket_collapse_toggle(day_tag)
 	if(collapsed) {
 		panel.setAttribute("docket-is-collapsed", "false");
 
-		icon.className = "docket-collapsing-indicator-image glyphicon glyphicon-chevron-up";
+		icon.className = "docket-collapsing-indicator-image glyphicon pull-right glyphicon-chevron-up";
 		body.style.display = "inherit";
 	} else {
 		panel.setAttribute("docket-is-collapsed", "true");
 
-		icon.className = "docket-collapsing-indicator-image glyphicon glyphicon-chevron-down";
+		icon.className = "docket-collapsing-indicator-image glyphicon pull-right glyphicon-chevron-down";
 		body.style.display = "none";
 	}
 }

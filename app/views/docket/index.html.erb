@@ -7,13 +7,6 @@
 <div class="panel panel-default docket-collapsing-div" id="docket-collapsing-day-panel-<%= day.iso8601 %>" docket-is-collapsed=<% day_is_collapsed ? "true" : "false" %>>
 	<div class="panel-heading">
 		<div class="row">
-			<div class="col-xs-1">
-				<a class="docket-collapsing-div-control-button"
-				   onclick="docket_collapse_toggle(<%= "\"" + day.iso8601 + "\"" %>)">
-					<%= generate_glyphicon("docket-collapsing-indicator-image", day_is_collapsed ? "chevron-down" : "chevron-up") %>
-				</a>
-			</div>
-
 			<div class="col-md-8">
 				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
 			</div>
@@ -33,6 +26,13 @@
 				~
 
 				<span class="badge"><%= day_items.count %></span>
+			</div>
+
+			<div class="col-xs-1">
+				<a class="docket-collapsing-div-control-button pull-right"
+				   onclick="docket_collapse_toggle(<%= "\"" + day.iso8601 + "\"" %>)">
+					<%= generate_glyphicon("docket-collapsing-indicator-image", day_is_collapsed ? "chevron-down" : "chevron-up") %>
+				</a>
 			</div>
 		</div>
 	</div>

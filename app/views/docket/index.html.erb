@@ -3,8 +3,8 @@
 </div>
 
 <% @days_of_this_week.each do |day| %>
-<div class="panel panel-default">
 <% day_is_collapsed = false %>
+<div class="panel panel-default docket-collapsing-div" id="docket-collapsing-day-panel-<%= day.iso8601 %>" docket-is-collapsed=<% day_is_collapsed ? "true" : "false" %>>
 	<div class="panel-heading">
 		<div class="row">
 			<div class="col-md-8">

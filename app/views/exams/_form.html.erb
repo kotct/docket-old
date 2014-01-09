@@ -26,7 +26,7 @@
 	<div class="form-group">
 		<%= f.label :date, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
-			<%= f.datetime_select :date, class: "form-control" %>
+			<%= f.date_select :date, class: "form-control" %>
 		</div>
 	</div>
 	<%= f.hidden_field :classroom_id, value: (@exam.classroom_id ? @exam.classroom_id : params[:classroom_id]), class: "form-control" %>

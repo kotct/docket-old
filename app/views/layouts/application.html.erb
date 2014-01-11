@@ -80,5 +80,17 @@
 				</div>
 			<% end %>
 		</article>
+	
+		<div id="footer">
+			<div class="row">
+				<div class="<%= current_user ? "col-md-7 col-md-offset-1" : "col-md-8 col-md-offset-2" %>">
+					<small>
+						You are running Docket version <%= Docket::VERSION %>.
+						<br />
+						<%= link_to "View on GitHub", Docket::GITHUB_URL %>
+					</small>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

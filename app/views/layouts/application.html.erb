@@ -59,7 +59,7 @@
 							<div class="panel-heading">
 								Schedule
 							</div>
-							
+
 							<div class="list-group">
 								<% if !current_user || current_user.classrooms.empty? %>
 									<div class="list-group-item">No classes</div>
@@ -80,17 +80,7 @@
 				</div>
 			<% end %>
 		</article>
-	
-		<div id="footer">
-			<div class="row">
-				<div class="<%= current_user ? "col-md-7 col-md-offset-1" : "col-md-8 col-md-offset-2" %>">
-					<small>
-						You are running Docket version <%= Docket::VERSION %>.
-						<br />
-						<%= link_to "View on GitHub", Docket::GITHUB_URL %>
-					</small>
-				</div>
-			</div>
-		</div>
+
+		<%= render :partial => "partials/footer" %>
 	</body>
 </html>

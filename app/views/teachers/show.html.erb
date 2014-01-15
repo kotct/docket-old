@@ -18,7 +18,7 @@
 	</thead>
 
 	<tbody>
-		<% @teacher.classrooms.each do |classroom| %>
+		<% @teacher.classrooms.sort_by(&:period).each do |classroom| %>
 			<tr>
 				<td><%= link_to classroom.course.name, classroom %></td>
 				<td><%= classroom.period %></td>

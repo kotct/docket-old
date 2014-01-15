@@ -43,9 +43,9 @@
 		<tbody>
 			<% @today_and_tomorrow_assignments.sort_by(&:due_date).each do |assignment| %>
 				<tr>
-					<td><%= link_to assignment.name, assignment %></td>
-					<td><%= link_to assignment.classroom.name, assignment.classroom %></td>
-					<td><%= assignment.due_date %></td>
+					<td style="vertical-align: middle"><%= link_to assignment.name, assignment %></td>
+					<td style="vertical-align: middle"><%= link_to assignment.classroom.name, assignment.classroom %></td>
+					<td style="vertical-align: middle"><%= assignment.due_date %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -69,16 +69,16 @@
 		<tbody>
 			<% @other_things.each do |assignment| %>
 				<tr>
-					<td><%= assignment.class.to_s %></td>
-					<td><%= link_to assignment.name, assignment %></td>
-					<td>
+					<td style="vertical-align: middle"><%= assignment.class.to_s %></td>
+					<td style="vertical-align: middle"><%= link_to assignment.name, assignment %></td>
+					<td style="vertical-align: middle">
 						<% if assignment.class == Event %>
 							N/A
 						<% else %>
 							<%= link_to assignment.classroom.name, assignment.classroom %>
 						<% end %>
 					</td>
-					<td><%= relevant_date assignment %></td>
+					<td style="vertical-align: middle"><%= relevant_date assignment %></td>
 				</tr>
 			<% end %>
 		</tbody>

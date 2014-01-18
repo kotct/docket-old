@@ -3,10 +3,11 @@
 </div>
 
 <% @days_of_this_week.each do |day| %>
-<div class="panel panel-default">
+<% day_is_collapsed = false %>
+<div class="panel panel-default" id="docket-collapsing-day-panel-<%= day.iso8601 %>" docket-is-collapsed=<% day_is_collapsed ? "true" : "false" %>>
 	<div class="panel-heading">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-6" style="padding-top: 4px; padding-bottom: 4px;">
 				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
 			</div>
 
@@ -17,19 +18,21 @@
 
 			<% day_items = day_assignments + day_exams + day_events %>
 
-			<div class="col-md-4">
-				<span class="badge"><%= day_assignments.count %></span>
-				<span class="badge"><%= day_exams.count %></span>
-				<span class="badge"><%= day_events.count %></span>
+			<div class="col-md-5" style="padding-top: 4px; padding-bottom: 4px;">
+				Assignments: <span class="badge"><%= day_assignments.count %></span>
+				Exams: <span class="badge"><%= day_exams.count %></span>
+				Events: <span class="badge"><%= day_events.count %></span>
+			</div>
 
-				~
-
-				<span class="badge"><%= day_items.count %></span>
+			<div class="col-xs-1">
+				<a class="btn btn-default" onclick="docket_collapse_toggle(<%= "\"#{day.iso8601}\"" %>)">
+					<span class="docket-collapsing-indicator-image pull-right glyphicon glyphicon-<%= day_is_collapsed ? "chevron-down" : "chevron-up" %>"></span>
+				</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="panel-body row">
+	<div class="panel-body row docket-collapsing-div-data">
 		<div class="col-xs-8">
 			<div class="row">
 				<% if day_exams.count == 0 %>

@@ -28,4 +28,9 @@ module ApplicationHelper
 			nil
 		end
 	end
+
+	def generate_glyphicon(spclass = "", glyphicon_name)
+		content_tag(:span, :class => "#{spclass} glyphicon glyphicon-#{glyphicon_name}") do
+		end
+	end
 end

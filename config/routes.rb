@@ -1,7 +1,7 @@
 Docket::Application.routes.draw do
-  get "configuration/show"
-  get "configuration/edit"
-  get "configuration/update"
+	get "configuration/show"
+	get "configuration/edit"
+	get "configuration/update"
 	get "docket" => "docket#index"
 
 	resources :memberships

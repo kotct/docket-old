@@ -36,9 +36,9 @@
 				<% end %>
 			<% end %>
 		<% end %>
-
-		<article>
-			<% if flash[:notice] %>
+		<div id="wrap">
+			<article>
+				<% if flash[:notice] %>
 				<div class="alert alert-success alert-dismissable">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 					<%= flash[:notice] %>
@@ -82,8 +82,9 @@
 					</div>
 				</div>
 			<% end %>
-		</article>
-	
+			</article>
+		</div>
+
 		<div id="footer">
 			<div class="row">
 				<div class="<%= current_user ? "col-md-7 col-md-offset-1" : "col-md-8 col-md-offset-2" %>">

@@ -43,7 +43,9 @@ class DocketController < ApplicationController
 		@this_week_events = []
 		@other_events = []
 
-		current_user.events.each do |e|
+		relevant_events = current_user.events + Event.where(:global => true)
+
+		relevant_events.each do |e|
 			case
 			when (@days_of_this_week.include? e.date)
 				@this_week_events << e

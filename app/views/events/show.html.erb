@@ -3,12 +3,21 @@
 </div>
 
 <p>
-  <%= @event.date %>
+	<%= @event.date %>
 </p>
 
 <p>
-  <%= @event.description %>
+	<%= @event.description %>
 </p>
+
+<p>
+	<% if @event.global? %>
+		This event is global (and can therefore not be joined or left).
+	<% else %>
+		This event is not global.
+	<% end %>
+</p>
+
 
 <div class="btn-group">
 	<% if !@event.global? %>

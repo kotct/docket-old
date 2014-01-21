@@ -43,7 +43,7 @@ class DocketController < ApplicationController
 		@this_week_events = []
 		@other_events = []
 
-		relevant_events = current_user.events + Event.where(:global => true)
+		relevant_events = (current_user.events + Event.where(:global => true)).uniq
 
 		relevant_events.each do |e|
 			case

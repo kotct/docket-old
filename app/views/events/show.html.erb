@@ -11,11 +11,14 @@
 </p>
 
 <div class="btn-group">
+	<% if !@event.global? %>
 	<% if @event.users.include? current_user %>
 		<%= link_to "Leave", leave_event_path(@event), class: "btn btn-danger" %>
 	<% else %>
 		<%= link_to "Join", join_event_path(@event), class: "btn btn-success" %>
 	<% end %>
+	<% end %>
+
 	<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary" %>
 	<%= link_to 'Back', events_path, class: "btn btn-default" %>
 </div>

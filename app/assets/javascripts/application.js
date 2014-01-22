@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require bootstrap
+//= require docket-toggle
 //= require typeahead
 
 var ready;
@@ -38,7 +39,7 @@ $(document).ready(ready);
 $(document).ready(function () {
 
 /*
-* Clamped-width. 
+* Clamped-width.
 * Usage:
 *  <div data-clampedwidth=".myParent">This long content will force clamped width</div>
 *

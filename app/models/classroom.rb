@@ -28,6 +28,18 @@ class Classroom < ActiveRecord::Base
 		self.teacher = Teacher.find_or_create_by_name(name) unless name.blank?
 	end
 
+	def day_assignments(day)
+		self.assignments.select {|assignment| assignment.due_date == day}
+	end
+
+	def day_exams(day)
+		self.exams.select {|exam| exam.date == day}
+	end
+
+	def day_activities(day)
+		self.day_assignments(day) + self.day_exams(day)
+	end
+
 	belongs_to :teacher
 	belongs_to :course
 	has_many :assignments

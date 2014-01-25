@@ -36,6 +36,10 @@ body {
 	padding-top: 70px;
 }
 
+.page-header {
+	margin-top: 0px;
+}
+
 .twitter-typeahead {
 	.tt-query, .tt-hint {
 		margin-bottom: 0;
@@ -59,11 +63,11 @@ body {
 .tt-suggestion {
 	display: block;
 	padding: 3px 20px;
-	
+
 	p {
 		margin: 0;
 	}
-	
+
 	&.tt-is-under-cursor {
 		color: #fff;
 		background-color: #0081c2;
@@ -85,7 +89,7 @@ body {
 		border: 1px solid transparent;
 		border-radius:4px;
 	}
-	
+
 	.hint-small {
 		height: 30px;
 		padding: 5px 10px;
@@ -93,7 +97,7 @@ body {
 		border-radius: 3px;
 		line-height: 1.5;
 	}
-	
+
 	.hint-large {
 		height: 45px;
 		padding: 10px 16px;
@@ -115,4 +119,29 @@ body {
 /* Custom CSS Rules */
 .link-no-underline:hover {
     text-decoration: none;
+}
+
+.hr-less-padding {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.panel-highlight {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.navbar-inverse {
+	background-color: #303030;
+	border-color: #101010;
+
+	a, p, li {
+		color: #a0a0a0;
+	}
+
+	a :hover {
+		color: #f0f0f0;
+	}
 }

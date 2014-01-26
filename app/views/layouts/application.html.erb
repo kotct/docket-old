@@ -69,17 +69,17 @@
 							</div>
 							<% else %>
 							<div class="list-group">
-									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-									<div class="list-group-item text-truncate">
-										<div class="badge"><%= classroom.period %></div>
-										<div class="btn-group">
-											<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
-											<%= link_to("+e", new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
-										</div>
-
-										<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>
+								<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
+								<div class="list-group-item text-truncate">
+									<div class="btn-group">
+										<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
+										<%= link_to("+e", new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
 									</div>
-									<% end %>
+
+									<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>
+									<div class="badge"><%= classroom.period %></div>
+								</div>
+								<% end %>
 							</div>
 							<% end %>
 						</div>

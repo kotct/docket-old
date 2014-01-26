@@ -38,10 +38,12 @@ class User < ActiveRecord::Base
 	def day_events(day)
 		all_events = (self.events + Event.where(:global => true)).uniq
 
+		# Select events from a certain day.
 		day_events = all_events.select { |event|
 			event.date.to_date == day
 		}
 
+		# Sort these events by date.
 		day_events.sort! { |first,last|
 			first.date <=> last.date
 		}

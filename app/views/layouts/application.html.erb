@@ -57,7 +57,7 @@
 						<%= yield %>
 					</div>
 
-					<div class="col-md-2 col-md-offset-1 visible-md visible-lg sidebar-col">
+					<div class="col-md-3 col-md-offset-0 visible-md visible-lg sidebar-col">
 						<div class="panel panel-default" data-spy="affix" data-clampedwidth=".sidebar-col">
 							<div class="panel-heading">
 								Schedule
@@ -70,8 +70,7 @@
 							<% else %>
 							<div class="list-group">
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-									<% lgclass = (request.path == classroom_path(classroom) ? "active" : "") %>
-									<div class="list-group-item text-truncate <%= lgclass %>">
+									<div class="list-group-item text-truncate">
 										<div class="badge"><%= classroom.period %></div>
 										<div class="btn-group">
 											<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>

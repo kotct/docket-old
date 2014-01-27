@@ -2,9 +2,8 @@ class Classroom < ActiveRecord::Base
 	include PublicActivity::Model
 	tracked owner: -> (controller, model) { controller && controller.current_user }
 
-	validates :period, presence: true, uniqueness: {scope: [:course_id, :teacher_id]}
-	validates :course_name, presence: true
-	validates :teacher_name, presence: true
+	validates :period, presence: true, uniqueness: { scope: [:course_id, :teacher_id] }
+	validates :course_name, :teacher_name, presence: true
 
 	def name
 		course.name + " -- " + period.ordinalize + " hour" + " -- " + teacher.name

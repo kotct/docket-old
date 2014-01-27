@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
 	validates :password, presence: true, on: :create
-	validates :email, presence: true, uniqueness: true
+	validates :email, presence: true, uniqueness: true, format: { with: /\A[\w\-\.]+\@[\w\-\.]+\z/ }
 	validates :name, presence: true
-
-	validates_format_of :email, :with => /\A[\w\-\.]+\@[\w\-\.]+\z/
 
 	has_secure_password
 

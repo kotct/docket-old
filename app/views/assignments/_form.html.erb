@@ -26,10 +26,19 @@
 	<div class="form-group">
 		<%= f.label :due_date, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
-			<%= f.datetime_select :due_date, class: "form-control" %>
+			<%= f.date_select :due_date, class: "form-control" %>
 		</div>
 	</div>
-	<%= f.hidden_field :classroom_id, value: @assignment.classroom_id, class: "form-control" %>
+	<% if params[:classroom_id] %>
+		<%= f.hidden_field :classroom_id, value: params[:classroom_id], class: "form-control" %>
+	<% else %>
+		<div class="form-group">
+			<%= f.label :classroom_id, class: "col-sm-4 control-label" %>
+			<div class="col-sm-8">
+				<%= f.select :classroom_id, current_user.classes.map { |c| [c.course.name, c.id] } %>
+			</div>
+		</div>
+	<% end %>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<%= f.submit class: "btn btn-success" %>

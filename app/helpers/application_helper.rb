@@ -28,4 +28,32 @@ module ApplicationHelper
 			nil
 		end
 	end
+
+	def generate_glyphicon(spclass = "", glyphicon_name)
+		content_tag(:span, :class => "#{spclass} glyphicon glyphicon-#{glyphicon_name}") do
+		end
+	end
+
+	def get_day_array(start_date = Date.today, expanse_of_time = :week)
+		desired_number_of_days = 0
+
+		case expanse_of_time
+		when :week
+			desired_number_of_days = 7
+		when :month
+			desired_number_of_days = (6 * 7)
+		end
+
+		days = []
+
+		for i in (0..(desired_number_of_days - 1))
+			day = start_date + i.days
+
+			puts "#{start_date + i.days}"
+
+			days << day
+		end
+
+		days
+	end
 end

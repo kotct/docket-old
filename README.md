@@ -5,13 +5,15 @@ It is currently being written and developed.
 
 ## Setup
 
-    $ git clone git://github.com/kotct/docket.git # Clones the repository, you can use another URL if you wish.
+```sh
+$ git clone git://github.com/kotct/docket.git # Clones the repository, you can use another URL if you wish.
 
-    $ cd docket
-    $ sudo bundle install # Installs all of the gems
+$ cd docket
+$ sudo bundle install # Installs all of the gems
 
-    $ rake db:setup # Sets up the database
-    $ rake db:migrate # Migrates the database to the latest version
+$ rake db:setup # Sets up the database
+$ rake db:migrate # Migrates the database to the latest version
+```
 
 ## Contributing
 

@@ -36,11 +36,17 @@ class Ability
 			can :manage, Event
 			can :manage, Teacher
 			can :manage, Course
+			
 			can :read, Assignment
 			can :create, Assignment
+			
 			can :manage, Assignment.all do |assignment|
 				assignment.classroom.users.include? user
 			end
+			
+			can :read, Exam
+			can :create, Exam
+
 			can :manage, Exam.all do |exam|
 				exam.classroom.users.include? user
 			end

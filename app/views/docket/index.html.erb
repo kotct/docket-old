@@ -3,22 +3,29 @@
 </div>
 
 <% @days_of_this_week.each do |day| %>
+<% day_assignments = current_user.day_assignments(day) %>
+<% day_exams = current_user.day_exams(day) %>
+<% day_assignments_and_exams = day_assignments + day_exams %>
+<% day_events = current_user.day_events(day) %>
+
+<% day_items = day_assignments + day_exams + day_events %>
+
 <% day_is_collapsed = false %>
 <div class="panel panel-default" id="docket-collapsing-day-panel-<%= day.iso8601 %>" docket-is-collapsed=<% day_is_collapsed ? "true" : "false" %>>
 	<div class="panel-heading">
 		<div class="row">
-			<div class="col-md-6" style="padding-top: 4px; padding-bottom: 4px;">
+			<div class="col-md-1" style="padding-top: 4px; padding-bottom: 4px;">
+				<span class="label label-default">
+					<%= day_assignments.count %> |
+					<%= day_exams.count %> |
+					<%= day_events.count %>
+				</span>
+			</div>
+
+			<div class="col-md-10" style="padding-top: 4px; padding-bottom: 4px;">
 				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
 			</div>
 
-			<% day_assignments = current_user.day_assignments(day) %>
-			<% day_exams = current_user.day_exams(day) %>
-			<% day_assignments_and_exams = day_assignments + day_exams %>
-			<% day_events = current_user.day_events(day) %>
-
-			<% day_items = day_assignments + day_exams + day_events %>
-
-			<div class="col-md-5"><!-- Spacing --></div>
 
 			<div class="col-xs-1">
 				<a class="btn btn-default" onclick="docket_collapse_toggle(<%= "\"#{day.iso8601}\"" %>)">
@@ -37,9 +44,11 @@
 					<div class="col-xs-12"><b>Exams:</b></div>
 					<% sort_by_period(current_user.classes_with_exams_on(day)).each do |classroom| %>
 						<div class="col-xs-1"><!-- Spacing --></div>
+
 						<div class="col-xs-11">
 							<b><%= link_to classroom.course_name, classroom, class: "link-no-underline" %>:</b>
 						</div>
+
 						<% classroom_day_exams = classroom.day_exams(day) %>
 						<% classroom_day_exams.each do |exam| %>
 						   <div class="col-xs-2"><!-- Spacing --></div>

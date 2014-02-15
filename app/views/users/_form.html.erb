@@ -17,28 +17,40 @@
 			<%= f.text_field :name, class: "form-control" %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= f.label :email, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
 			<%= f.text_field :email, class: "form-control" %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= f.label :graduation_year, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
 			<%= f.number_field :graduation_year, class: "form-control" %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= f.label :password, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
 			<%= f.password_field :password, class: "form-control" %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= f.label :password_confirmation, class: "col-sm-4 control-label" %>
 		<div class="col-sm-8">
 			<%= f.password_field :password_confirmation, class: "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :week_start, class: "col-sm-4 control-label" %>
+		<div class="col-sm-8">
+			<%= f.select :preferences_week_start,
+			    [[ "Current Day", :today ], [ "Previous Monday", :previous_monday ], [ "Previous Sunday", :previous_sunday ]] %>
 		</div>
 	</div>
 

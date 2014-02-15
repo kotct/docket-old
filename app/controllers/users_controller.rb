@@ -45,6 +45,9 @@ class UsersController < ApplicationController
 	def update
 		@user.admin = nil unless admin?
 
+		@user.update_attributes(params[:user])
+		@user.preferences.save
+
 		respond_to do |format|
 			if @user.update(user_params)
 				format.html { redirect_to @user, notice: "User was successfully updated." }

@@ -77,7 +77,10 @@
 											</div>
 
 											<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>
-											<div class="badge"><%= classroom.period %></div>
+
+											<div class="label label-default pull-right">
+												<%= classroom.period %>
+											</div>
 										</div>
 									<% end %>
 								</div>

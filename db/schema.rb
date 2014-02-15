@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121125432) do
+ActiveRecord::Schema.define(version: 20140215163658) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -87,12 +87,33 @@ ActiveRecord::Schema.define(version: 20140121125432) do
     t.datetime "updated_at"
   end
 
+  create_table "has_easy_things", force: true do |t|
+    t.string   "model_type", null: false
+    t.integer  "model_id",   null: false
+    t.string   "context"
+    t.string   "name",       null: false
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
     t.integer  "classroom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "settings", force: true do |t|
+    t.string   "var",         null: false
+    t.text     "value"
+    t.integer  "target_id",   null: false
+    t.string   "target_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
 
   create_table "teachers", force: true do |t|
     t.string   "name"

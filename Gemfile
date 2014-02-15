@@ -65,3 +65,6 @@ gem 'indefinite_article', '~> 0.2.0'
 
 # Permissions
 gem 'cancan'
+
+# Has_Easy for the easy preferences-y thing
+gem 'has_easy'

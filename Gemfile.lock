@@ -75,6 +75,8 @@ GEM
     guard-rspec (4.2.6)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    has_easy (0.9.0)
+      rails (>= 3.0)
     hike (1.2.3)
     i18n (0.6.9)
     indefinite_article (0.2.0)
@@ -208,6 +210,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   guard-rspec
+  has_easy
   indefinite_article (~> 0.2.0)
   jbuilder (~> 1.2)
   jquery-rails

@@ -70,8 +70,6 @@ class User < ActiveRecord::Base
 	has_many :attendances
 	has_many :events, :through => :attendances
 
-	has_one :configuration
-
 	# Settings
 	has_easy :preferences do |p|
 		p.define :week_start, default: :today

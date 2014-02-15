@@ -27,7 +27,7 @@
 			<%= navbar_group align: "right" do %>
 				<% if current_user %>
 					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>
-					<%= navbar_text "Logged In as " + current_user.name %>
+					<%= navbar_text "Logged In as " + current_user.name + " (" + current_user.email + ")" %>
 					<%= navbar_item "Log Out", log_out_path %>
 				<% else %>
 					<%= navbar_text "Not Logged In" %>

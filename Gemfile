@@ -58,6 +58,7 @@ end
 # We will use this for admin-y big brother-related things.
 gem 'public_activity'
 
+# Use turbolinks for faster link location-y stuff.
 gem 'jquery-turbolinks'
 
 # Handle indefinite articles correctly

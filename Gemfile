@@ -55,7 +55,7 @@ group :test do
 	gem 'guard-rspec'
 end
 
-# will use this for admin big brother powers
+# We will use this for admin-y big brother-related things.
 gem 'public_activity'
 
 gem 'jquery-turbolinks'

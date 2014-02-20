@@ -7,7 +7,7 @@
 <div class="panel panel-default" id="docket-collapsing-day-panel-<%= day.iso8601 %>" docket-is-collapsed=<% day_is_collapsed ? "true" : "false" %>>
 	<div class="panel-heading">
 		<div class="row">
-			<div class="col-md-6" style="padding-top: 4px; padding-bottom: 4px;">
+			<div class="col-xs-11" style="padding-top: 4px; padding-bottom: 4px;">
 				<b><%= Date::DAYNAMES[day.wday] %></b>, the <b><%= day.mday.ordinalize %></b> of <b><%= Date::MONTHNAMES[day.month] %></b>
 			</div>
 
@@ -17,12 +17,6 @@
 			<% day_events = current_user.day_events(day) %>
 
 			<% day_items = day_assignments + day_exams + day_events %>
-
-			<div class="col-md-5" style="padding-top: 4px; padding-bottom: 4px;">
-				Assignments: <span class="badge"><%= day_assignments.count %></span>
-				Exams: <span class="badge"><%= day_exams.count %></span>
-				Events: <span class="badge"><%= day_events.count %></span>
-			</div>
 
 			<div class="col-xs-1">
 				<a class="btn btn-default" onclick="docket_collapse_toggle(<%= "\"#{day.iso8601}\"" %>)">

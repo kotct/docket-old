@@ -19,23 +19,23 @@
 	<body>
 		<%= navbar brand: "My Docket", brand_link: root_url, fixed: :top, inverse: true do %>
 			<%= navbar_group class: "foo", id: "menu" do %>
-				<% if current_user %>
-					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>
-				<% end %>
 				<%= navbar_item "Events", events_path %>
 				<%= navbar_item "Teachers", teachers_path %>
 				<%= navbar_item "Courses", courses_path %>
 				<%= navbar_item "Classes", classrooms_path %>
 			<% end %>
 			<%= navbar_group align: "right" do %>
-				<%= navbar_text current_user ? "Logged in as " + current_user.name : "Not logged in" %>
 				<% if current_user %>
+					<%= navbar_item "My Account", edit_polymorphic_path(current_user) %>
+					<%= navbar_text "Logged In as " + current_user.name %>
 					<%= navbar_item "Log Out", log_out_path %>
 				<% else %>
+					<%= navbar_text "Not Logged In" %>
 					<%= navbar_item "Sign Up", new_user_path %>
 				<% end %>
 			<% end %>
 		<% end %>
+
 		<div id="wrap">
 			<article>
 				<% if flash[:notice] %>
@@ -57,21 +57,31 @@
 						<%= yield %>
 					</div>
 
-					<div class="col-md-2 col-md-offset-1 visible-md visible-lg sidebar-col">
+					<div class="col-md-3 col-md-offset-0 visible-md visible-lg sidebar-col">
 						<div class="panel panel-default" data-spy="affix" data-clampedwidth=".sidebar-col">
 							<div class="panel-heading">
 								Schedule
 							</div>
 
-							<div class="list-group">
-								<% if !current_user || current_user.classrooms.empty? %>
-									<div class="list-group-item">No classes</div>
-								<% else %>
+							<% if !current_user || current_user.classrooms.empty? %>
+								<div class="panel-body">
+									<p>No classes!</p>
+								</div>
+							<% else %>
+								<div class="list-group">
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-										<%= link_to (content_tag(:span, classroom.period, class: "badge") + classroom.course.name), classroom, class: "list-group-item " + (request.path == classroom_path(classroom) ? "active" : "") %>
+										<div class="list-group-item text-truncate">
+											<div class="btn-group">
+												<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
+												<%= link_to("+e", new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
+											</div>
+
+											<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>
+											<div class="badge"><%= classroom.period %></div>
+										</div>
 									<% end %>
-								<% end %>
-							</div>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>

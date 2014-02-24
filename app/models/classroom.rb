@@ -6,7 +6,7 @@ class Classroom < ActiveRecord::Base
 	validates :course_name, :teacher_name, presence: true
 
 	def name
-		course.name + " -- " + period.ordinalize + " hour" + " -- " + teacher.name
+		period.ordinalize + " hour \"" + course.name + "\": " + teacher.name
 	end
 
 	alias_method :information, :name

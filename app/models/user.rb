@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
 		self.classrooms.select { |classroom| classroom.day_exams(day).count > 0 }
 	end
 
+	def as_json(options = {})
+		super(options.merge({except: [:password_digest]}))
+	end
+
 	has_many :memberships
 	has_many :classrooms, :through => :memberships
 	has_many :attendances

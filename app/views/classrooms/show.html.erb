@@ -26,7 +26,7 @@
 	</thead>
 
 	<tbody>
-		<% @classroom.exams.sort_by(&:date).first(3).each do |exam| %>
+		<% @classroom.exams.sort_by(&:date).select{|d| d.date >= Date.today}.each do |exam| %>
 			<tr>
 				<td><%= link_to exam.name, exam %></td>
 				<td><%= exam.date %></td>
@@ -52,7 +52,7 @@
 	</thead>
 
 	<tbody>
-		<% @classroom.assignments.sort_by(&:due_date).first(5).each do |assignment| %>
+		<% @classroom.assignments.sort_by(&:due_date).select{|d| d.due_date >= Date.today}.each do |assignment| %>
 			<tr>
 				<td><%= link_to assignment.name, assignment %></td>
 				<td><%= assignment.due_date %></td>

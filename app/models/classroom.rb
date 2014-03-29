@@ -5,8 +5,22 @@ class Classroom < ActiveRecord::Base
 	validates :period, presence: true, uniqueness: { scope: [:course_id, :teacher_id] }
 	validates :course_name, :teacher_name, presence: true
 
-	def name
-		course.name + " -- " + period.ordinalize + " hour" + " -- " + teacher.name
+	def name(html = false)
+		if html
+			return ("<span id=\"course-period-span\" class=\"course-info-span\">" +
+			        "#{period.ordinalize} hour" +
+			        "</span>" + " " +
+
+			        "<span id=\"course-course-name-span\" class=\"course-info-span\">" +
+			        "#{course.name} class" +
+			        "</span>" + ", taught by " +
+
+			        "<span id=\"course-teacher-name-span\" class=\"course-info-span\">" +
+			        "#{teacher.name}" +
+			        "</span>").html_safe
+		else
+			return ("#{period.ordinalize} hour #{course.name}: #{teacher.name}")
+		end
 	end
 
 	alias_method :information, :name

@@ -7,15 +7,18 @@ Docket::Application.routes.draw do
 	resources :memberships
 	resources :exams
 	resources :assignments
+
 	resources :classrooms do
 		member do
 			get "join"
 			get "leave"
 		end
 	end
+
 	resources :courses
 	resources :teachers
 	resources :sessions
+
 	resources :users do
 		member do
 			get "activity"
@@ -24,6 +27,7 @@ Docket::Application.routes.draw do
 			get "activity" => "users#index_activities"
 		end
 	end
+
 	resources :events do
 		member do
 			get "join"

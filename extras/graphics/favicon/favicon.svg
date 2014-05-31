@@ -38,8 +38,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="299.86069"
-     inkscape:cy="400.44771"
+     inkscape:cx="241.27184"
+     inkscape:cy="467.61593"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,72 +56,36 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-28.362183)">
-    <rect
-       style="fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:#404040;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect3004"
-       width="896"
-       height="896"
-       x="72"
-       y="84.362183"
-       ry="128"
-       rx="128" />
-    <rect
-       rx="128"
-       ry="128"
-       y="84.362183"
-       x="136"
-       height="896"
-       width="832"
-       id="rect3793"
-       style="fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:#404040;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <rect
-       style="fill:#606060;fill-opacity:0.3764706;fill-rule:nonzero;stroke:#404040;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect3797"
-       width="768"
-       height="896"
-       x="200"
-       y="84.362183"
-       ry="128"
-       rx="128" />
-    <rect
-       style="fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:#404040;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect3799"
-       width="864"
-       height="896"
-       x="104"
-       y="84.362183"
-       ry="128"
-       rx="128" />
-    <rect
-       rx="128"
-       ry="128"
-       y="84.362183"
-       x="168"
-       height="896"
-       width="800"
-       id="rect3801"
-       style="fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:#404040;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <text
        xml:space="preserve"
-       style="font-size:6.3136797px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Sans Bold"
-       x="219.45197"
-       y="603.69653"
+       style="font-size:6.31367969999999978px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Sans Bold;writing-mode:lr"
+       x="708.51556"
+       y="179.64417"
        id="text3803"
        sodipodi:linespacing="125%"
-       transform="scale(0.99584842,1.0041689)"><tspan
+       transform="scale(0.99584841,1.0041689)"><tspan
          sodipodi:role="line"
-         x="219.45197"
-         y="603.69653"
-         id="tspan3807"
-         style="font-size:202.03775024px;fill:#282828;fill-opacity:1">DOCKET</tspan></text>
+         x="179.64417"
+         y="708.51556"
+         style="font-size:202.03775024000000826px;writing-mode:lr;fill:#282828;fill-opacity:1"
+         id="tspan3036" /><tspan
+         sodipodi:role="line"
+         x="179.64417"
+         y="455.96838"
+         style="font-size:202.03775024000000826px;writing-mode:lr;fill:#282828;fill-opacity:1"
+         id="tspan3032" /></text>
   </g>
 </svg>

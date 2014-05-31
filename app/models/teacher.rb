@@ -5,8 +5,12 @@ class Teacher < ActiveRecord::Base
 	validates :name, presence: true
 	validates :email, format: { with: /\A[\w\-\.]+\@[\w\-\.]+\z/ }
 
+	def first_name
+		name.split(" ").first
+	end
+
 	def last_name
-		name.split.last
+		name.split(" ").last
 	end
 
 	has_many :classrooms

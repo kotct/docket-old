@@ -38,18 +38,25 @@
 
 		<div id="wrap">
 			<article>
+				<div class="row">
 				<% if flash[:notice] %>
-				<div class="alert alert-success alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<%= flash[:notice] %>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<%= flash[:notice] %>
+						</div>
+					</div>
+				<% end %>
+
+				<% if flash[:alert] %>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							<%= flash[:alert] %>
+						</div>
+					</div>
+				<% end %>
 				</div>
-			<% end %>
-			<% if flash[:alert] %>
-				<div class="alert alert-danger alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<%= flash[:alert] %>
-				</div>
-			<% end %>
 
 			<% if current_user %>
 				<div class="row">

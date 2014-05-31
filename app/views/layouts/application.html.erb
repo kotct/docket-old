@@ -39,23 +39,17 @@
 		<div id="wrap">
 			<article>
 				<div class="row">
-				<% if flash[:notice] %>
-					<div class="col-md-10 col-md-offset-1">
-						<div class="alert alert-success alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<%= flash[:notice] %>
-						</div>
+					<div class="<%= current_user ? "col-md-10 col-md-offset-1" : "col-md-8 col-md-offset-2"%>">
+						<% class_hash = {alert: "alert-danger", notice: "alert-success"} %>
+						<% [:alert, :notice].each do |type| %>
+							<% if flash[type] %>
+								<div class="alert <%= class_hash[type] %> alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<%= flash[type] %>
+								</div>
+							<% end %>
+						<% end %>
 					</div>
-				<% end %>
-
-				<% if flash[:alert] %>
-					<div class="col-md-10 col-md-offset-1">
-						<div class="alert alert-danger alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<%= flash[:alert] %>
-						</div>
-					</div>
-				<% end %>
 				</div>
 
 			<% if current_user %>

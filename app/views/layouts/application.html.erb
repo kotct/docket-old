@@ -73,8 +73,8 @@
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
 										<div class="list-group-item text-truncate">
 											<div class="btn-group">
-												<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
-												<%= link_to("+e", new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
+												<%= link_to fa_icon("pencil", class: "fa-fw"), new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs", title: "New assignment" %>
+												<%= link_to fa_icon("file-text-o", class: "fa-fw"), new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs", title: "New exam" %>
 											</div>
 
 											<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>

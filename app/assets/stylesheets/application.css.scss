@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */
@@ -17,6 +18,8 @@
 @mixin browser-extensions($property, $values...) {
 	-webkit-#{$property}: $values;
 	   -moz-#{$property}: $values;
+	    -ms-#{$property}: $values;
+	     -o-#{$property}: $values;
 	        #{$property}: $values;
 }
 
@@ -150,4 +153,51 @@ body {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.schedule-item {
+	padding: 0px;
+	display: flex;
+}
+
+.schedule-btn, .schedule-btn:hover, .schedule-btn:focus {
+	border-radius: 0px;
+	margin: 0px !important;
+	border: 1px solid transparent;
+}
+
+.schedule-item-last-contents {
+	display: flex;
+	justify-content: space-between;
+}
+
+.schedule-btn:not(:first-child) {
+	border-left-color: #cccccc;
+}
+
+.schedule-item.active .schedule-btn:not(:first-child) {
+	border-left-color: #999999;
+}
+
+.schedule-btn:last-child {
+	text-align: left;
+	width: 100%;
+}
+
+.schedule-btn .badge {
+	background-color: #999;
+}
+
+.schedule-item.active {
+	z-index: 2;
+	color: #FFF;
+	background-color: #428BCA;
+	border-color: #428BCA;
+}
+
+.schedule-item.active .btn {
+	z-index: 2;
+	color: #FFF;
+	background-color: #428BCA;
+	border-color: #428BCA;
 }

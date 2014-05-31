@@ -71,14 +71,11 @@
 							<% else %>
 								<div class="list-group">
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
-										<div class="list-group-item text-truncate">
-											<div class="btn-group">
-												<%= link_to("+a", new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
-												<%= link_to("+e", new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default btn-xs") %>
-											</div>
-
-											<%= link_to(classroom.course.name, classroom, class: "link-no-underline") %>
-											<div class="badge"><%= classroom.period %></div>
+										<% lgclass = (request.path == classroom_path(classroom) ? "active" : "") %>
+										<div class="list-group-item text-truncate schedule-item btn-group <%= lgclass %>">
+											<%= link_to fa_icon("pencil", class: "fa-fw"), new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default schedule-btn", title: "New assignment" %>
+											<%= link_to fa_icon("file-text-o", class: "fa-fw"), new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default schedule-btn", title: "New exam" %>
+											<%= link_to ("<div class=\"schedule-item-last-contents\">" + classroom.course.name + " <div class=\"badge\">" + classroom.period.to_s + "</div></div>").html_safe, classroom, class: "link-no-underline btn btn-default schedule-btn" %>
 										</div>
 									<% end %>
 								</div>

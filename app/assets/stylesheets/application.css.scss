@@ -175,6 +175,10 @@ body {
 	border-left-color: #cccccc;
 }
 
+.schedule-item.active .schedule-btn:not(:first-child) {
+	border-left-color: #999999;
+}
+
 .schedule-btn:last-child {
 	text-align: left;
 	width: 100%;
@@ -182,4 +186,18 @@ body {
 
 .schedule-btn .badge {
 	background-color: #999;
+}
+
+.schedule-item.active {
+	z-index: 2;
+	color: #FFF;
+	background-color: #428BCA;
+	border-color: #428BCA;
+}
+
+.schedule-item.active .btn {
+	z-index: 2;
+	color: #FFF;
+	background-color: #428BCA;
+	border-color: #428BCA;
 }

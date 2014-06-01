@@ -16,7 +16,6 @@ class ExamsController < ApplicationController
 	# GET /exams/new
 	def new
 		@exam = Exam.new
-		@exam.classroom_id = params[:classroom_id]
 	end
 
 	# GET /exams/1/edit

@@ -213,6 +213,12 @@ body {
 	padding-right: 40px;
 }
 
+.navbar.box-shadow {
+	/* -webkit-box-shadow: 0px 3px 5px 0px #ccc; */
+	/* -moz-box-shadow: 0px 3px 5px 0px #ccc; */
+	box-shadow: 0px 2px 10px 0px #ccc;
+}
+
 .label-list.label-list-name {
 	display: inline-block;
 	font-size: 100%;

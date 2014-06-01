@@ -17,7 +17,7 @@
 	</head>
 
 	<body>
-		<%= navbar fixed: :top do %>
+		<%= navbar fixed: :top, class: "box-shadow" do %>
 		<div class="row">
 			<div class="<%= current_user ? "col-md-10 col-md-offset-1" : "col-md-8 col-md-offset-2"%>">
 			<%= navbar_header brand: "Docket", brand_link: root_url%>

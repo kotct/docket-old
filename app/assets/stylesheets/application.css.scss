@@ -184,22 +184,28 @@ body {
 	width: 100%;
 }
 
-.schedule-btn .badge {
-	background-color: #999;
+.schedule-btn .label {
+	padding: .5em .5em .2em .6em;
+	border-radius: 4px;
+}
+
+.schedule-item.active .schedule-btn .label {
+	background-color: #fff;
+	color: #428bca;
 }
 
 .schedule-item.active {
 	z-index: 2;
-	color: #FFF;
-	background-color: #428BCA;
-	border-color: #428BCA;
+	color: #fff;
+	background-color: #428bca;
+	border-color: #428bca;
 }
 
 .schedule-item.active .btn {
 	z-index: 2;
-	color: #FFF;
-	background-color: #428BCA;
-	border-color: #428BCA;
+	color: #fff;
+	background-color: #428bca;
+	border-color: #428bca;
 }
 
 .navbar.navbar-fixed-top {

@@ -211,7 +211,7 @@ DEPENDENCIES
   jquery-turbolinks
   public_activity
   rails (= 4.0.1)
-  rails_bootstrap_navbar (~> 2)
+  rails_bootstrap_navbar (~> 2.0)
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

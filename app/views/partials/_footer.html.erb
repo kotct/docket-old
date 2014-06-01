@@ -1,21 +1,19 @@
 <div id="footer">
-	<div class="row">
-		<div class="<%= current_user ? "col-md-7 col-md-offset-1" : "col-md-8 col-md-offset-2" %>" style="text-align: center;">
-			<small>
-				You are running Docket version <%= Docket::VERSION %>.
+	<div style="text-align: center;">
+		<small>
+			You are running Docket version <%= Docket::VERSION %>.
 
-				<br />
+			<br />
 
-				<%= link_to image_tag("GitHub-Mark-120px-plus.png",
-				                      title: "View this project on GitHub",
-				                      alt: "View this project on GitHub",
-				                      height: 32,
-				                      width: 32), Docket::GITHUB_URL %>
+			<%= link_to image_tag("GitHub-Mark-120px-plus.png",
+				                  title: "View this project on GitHub",
+				                  alt: "View this project on GitHub",
+				                  height: 32,
+				                  width: 32), Docket::GITHUB_URL %>
 
-				|
+			|
 
-				<b><%= link_to "Wiki", "https://github.com/kotct/docket/wiki", class: "link-no-underline" %></b>
-			</small>
-		</div>
+			<b><%= link_to "Wiki", "https://github.com/kotct/docket/wiki", class: "link-no-underline" %></b>
+		</small>
 	</div>
 </div>

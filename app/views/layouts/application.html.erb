@@ -73,9 +73,26 @@
 									<% current_user.classrooms.sort_by(&:period).each do |classroom| %>
 										<% lgclass = (request.path == classroom_path(classroom) ? "active" : "") %>
 										<div class="list-group-item text-truncate schedule-item btn-group <%= lgclass %>">
-											<%= link_to fa_icon("pencil", class: "fa-fw"), new_assignment_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default schedule-btn", title: "New assignment" %>
-											<%= link_to fa_icon("file-text-o", class: "fa-fw"), new_exam_path + "?classroom_id=" + classroom.id.to_s, class: "btn btn-default schedule-btn", title: "New exam" %>
-											<%= link_to ("<div class=\"schedule-item-last-contents\">" + classroom.course.name + " <div class=\"badge\">" + classroom.period.to_s + "</div></div>").html_safe, classroom, class: "link-no-underline btn btn-default schedule-btn" %>
+											<a class="btn btn-default schedule-btn"
+											   title="New assignment"
+											   href="<%= new_assignment_path + "?classroom_id=" + classroom.id.to_s %>">
+												<%= fa_icon("pencil", class: "fa-fw") %>
+											</a>
+
+											<a class="btn btn-default schedule-btn"
+											   title="New exam"
+											   href="<%= new_exam_path + "?classroom_id=" + classroom.id.to_s %>">
+												<%= fa_icon("file-text-o", class: "fa-fw") %>
+											</a>
+
+											<a class="link-no-underline btn btn-default schedule-btn"
+											   href="<%= classroom_path(classroom) %>">
+												<div class="schedule-item-last-contents text-truncate" style="display: inline">
+													<div class="label label-default"><%= classroom.period.to_s %></div>
+
+													<%= classroom.course.name %>
+												</div>
+											</a>
 										</div>
 									<% end %>
 								</div>

@@ -9,9 +9,9 @@
 <p><%= @classroom.description %></p>
 
 <p>
-	<strong>Members:</strong>
+	<div class="label-list label-list-name">Members</div>
 	<% @classroom.users.each do |student| %>
-		<%= link_to student.name, student, class: "link-no-underline label label-default" %>
+		<%= link_to student.name, student, class: "label label-default label-list" %>
 	<% end %>
 </p>
 

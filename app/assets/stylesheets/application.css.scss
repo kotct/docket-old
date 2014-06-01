@@ -201,3 +201,23 @@ body {
 	background-color: #428BCA;
 	border-color: #428BCA;
 }
+
+.navbar.navbar-fixed-top {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.label-list.label-list-name {
+	display: inline-block;
+	font-size: 100%;
+	padding: 1px 6px 2px 0px;
+	border-right: 1px solid #777;
+	margin: 0px 2px 0px 0px;
+}
+
+.label.label-list {
+	/* margin-top: -1px; */
+	padding: 1px 6px 2px;
+	font-weight: normal;
+	font-size: 100%;
+}

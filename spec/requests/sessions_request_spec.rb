@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "Sessions request" do
-	
+
 	describe "Login" do
-		
+
 		it "logs in a user" do
 			user = FactoryGirl.create(:user)
 			log_in user
@@ -20,7 +20,7 @@ describe "Sessions request" do
 			page.should have_content "Fail"
 			page.should_not have_content "Logged in!"
 		end
-		
+
 	end
-	
+
 end

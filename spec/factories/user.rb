@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
 	factory :user do
 		sequence(:name) { |n| "Person#{n} Tester" }
 		sequence(:email) { |n| "fooo#{n}@example.com" }
@@ -8,4 +9,5 @@ FactoryGirl.define do
 			admin true
 		end
 	end
+
 end

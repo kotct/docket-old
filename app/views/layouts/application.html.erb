@@ -92,8 +92,8 @@
 
 											<a class="link-no-underline btn btn-default schedule-btn"
 											   href="<%= classroom_path(classroom) %>">
-												<div class="schedule-item-last-contents text-truncate">
-													<%= classroom.course.name %>
+												<div class="schedule-item-last-contents">
+													<div class="text-truncate"><%= classroom.course.name %></div>
 
 													<div class="label label-default"><%= classroom.period.to_s %></div>
 												</div>

@@ -65,6 +65,11 @@ class User < ActiveRecord::Base
 		self.classrooms.select { |classroom| classroom.day_exams(day).count > 0 }
 	end
 
+	# Are we sure we want to override this?
+	# It seems like it might break things.
+	# We could call it something like as_json_secure.
+	# Or we could just type except: [:password_digest]
+	# whenever we need to.
 	def as_json(options = {})
 		super(options.merge({except: [:password_digest]}))
 	end

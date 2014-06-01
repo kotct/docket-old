@@ -1,4 +1,6 @@
 module ApplicationHelper
+	PRINT_DEBUG_STRINGS = true
+
 	def relevant_date(thing)
 		case
 		when thing.class == Assignment
@@ -35,6 +37,8 @@ module ApplicationHelper
 	end
 
 	def get_day_array(start_date = Date.today, expanse_of_time = :week)
+		puts "Starting day string get (start_date = #{start_date}, expanse_of_time = #{expanse_of_time})" if PRINT_DEBUG_STRINGS
+
 		desired_number_of_days = 0
 
 		case expanse_of_time
@@ -42,18 +46,24 @@ module ApplicationHelper
 			desired_number_of_days = 7
 		when :month
 			desired_number_of_days = (6 * 7)
+		when :day
+			desired_number_of_days = 1
 		end
+
+		puts "Desired number of days: #{desired_number_of_days}" if PRINT_DEBUG_STRINGS
 
 		days = []
 
 		for i in (0..(desired_number_of_days - 1))
 			day = start_date + i.days
 
-			puts "#{start_date + i.days}"
+			puts "Adding date: #{start_date + i.days}" if PRINT_DEBUG_STRINGS
 
 			days << day
 		end
 
-		days
+		puts "Returning array with length #{days.count}" if PRINT_DEBUG_STRINGS
+
+		return days
 	end
 end

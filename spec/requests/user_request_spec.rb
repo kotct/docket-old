@@ -55,11 +55,11 @@ describe "User request" do
 			page.should have_content "error"
 			page.should_not have_content "created"
 		end
-		
+
 	end
-		
+
 	describe "Edit" do
-		
+
 		it "successfully edits a user" do
 			user = FactoryGirl.create(:user)
 			log_in(user)
@@ -79,7 +79,7 @@ describe "User request" do
 			click_button "Update"
 			page.should have_content "successfully"
 		end
-		
+
 		it "tries to edit a user" do
 			user = FactoryGirl.create(:user)
 			visit edit_user_url(user)
@@ -95,7 +95,7 @@ describe "User request" do
 	end
 
 	describe "Show" do
-		
+
 		it "successfully shows a user" do
 			user = FactoryGirl.create(:user)
 			log_in(user)
@@ -115,7 +115,7 @@ describe "User request" do
 			page.should have_content user.email
 			page.should_not have_content user.password # D'oh
 		end
-		
+
 		it "tries to show a user" do
 			user = FactoryGirl.create(:user)
 			visit user_url(user)
@@ -133,7 +133,7 @@ describe "User request" do
 	end
 
 	describe "Index" do
-		
+
 		it "successfully indexes all users" do
 			user_admin = FactoryGirl.create(:admin)
 			log_in(user_admin)
@@ -142,7 +142,7 @@ describe "User request" do
 			page.should_not have_content "permission"
 			page.should have_content "users"
 		end
-		
+
 		it "tries to show a user" do
 			visit users_path
 			page.should_not have_content "Users"

@@ -213,6 +213,16 @@ body {
 	padding-right: 40px;
 }
 
+ul.navbar-nav > li:hover {
+	margin-bottom: -4px;
+	border-bottom: 4px solid #ccc;
+}
+
+ul.navbar-nav > li.hover-box-shadow:hover {
+	box-shadow: inset 0 0 10px #ccc;
+}
+
+
 .navbar.box-shadow {
 	/* -webkit-box-shadow: 0px 3px 5px 0px #ccc; */
 	/* -moz-box-shadow: 0px 3px 5px 0px #ccc; */

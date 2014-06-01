@@ -46,7 +46,7 @@ gem 'bcrypt-ruby'
 
 gem 'thin'
 gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'rails_bootstrap_navbar', '~> 1.0.1'
+gem 'rails_bootstrap_navbar', '~> 2'
 gem 'font-awesome-rails'
 gem 'rspec-rails', :group => [:test, :development]
 

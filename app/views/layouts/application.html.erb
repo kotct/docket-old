@@ -18,6 +18,8 @@
 
 	<body>
 		<%= navbar fixed: :top do %>
+		<div class="row">
+			<div class="<%= current_user ? "col-md-10 col-md-offset-1" : "col-md-8 col-md-offset-2"%>">
 			<%= navbar_header brand: "Docket", brand_link: root_url%>
 			<%= navbar_group class: "foo", id: "menu" do %>
 				<%= navbar_item "Events", events_path %>
@@ -35,6 +37,8 @@
 					<%= navbar_item "Sign Up", new_user_path %>
 				<% end %>
 			<% end %>
+			</div>
+		</div>
 		<% end %>
 
 		<div id="wrap">

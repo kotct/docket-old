@@ -212,9 +212,10 @@ body {
 	padding-right: 40px;
 }
 
-ul.navbar-nav > li:hover {
-	margin-bottom: -2px;
+ul.navbar-nav > li a:hover, .navbar-header .navbar-brand:hover {
+	padding-bottom: 13px;
 	border-bottom: 2px solid #ccc;
+	
 }
 
 ul.navbar-nav > li.hover-box-shadow:hover {

@@ -201,6 +201,13 @@ body {
 	border-color: #428bca;
 }
 
+.schedule-item.active .schedule-btn.active {
+	z-index: 3;
+	color: #fff;
+	background-color: #2069a8;
+	border-color: #2069a8;
+}
+
 .schedule-item.active .btn {
 	z-index: 2;
 	color: #fff;

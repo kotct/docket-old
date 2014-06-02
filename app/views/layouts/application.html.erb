@@ -20,21 +20,21 @@
 		<%= navbar fixed: :top, class: "box-shadow" do %>
 		<div class="row">
 			<div class="<%= current_user ? "col-md-10 col-md-offset-1" : "col-md-8 col-md-offset-2"%>">
-			<%= navbar_header brand: "Docket", brand_link: root_url%>
+			<%= navbar_header brand: "Docket", brand_link: root_url, class: "active-box-shadow" %>
 			<%= navbar_group class: "foo", id: "menu" do %>
-				<%= navbar_item "Events", events_path, class: "hover-box-shadow" %>
-				<%= navbar_item "Teachers", teachers_path, class: "hover-box-shadow" %>
-				<%= navbar_item "Courses", courses_path, class: "hover-box-shadow" %>
-				<%= navbar_item "Classes", classrooms_path, class: "hover-box-shadow" %>
+				<%= navbar_item "Events", events_path, class: "active-box-shadow" %>
+				<%= navbar_item "Teachers", teachers_path, class: "active-box-shadow" %>
+				<%= navbar_item "Courses", courses_path, class: "active-box-shadow" %>
+				<%= navbar_item "Classes", classrooms_path, class: "active-box-shadow" %>
 			<% end %>
 			<%= navbar_group align: "right" do %>
 				<% if current_user %>
-					<%= navbar_item "My Account", edit_polymorphic_path(current_user), class: "hover-box-shadow" %>
+					<%= navbar_item "My Account", edit_polymorphic_path(current_user), class: "active-box-shadow" %>
 					<%= navbar_text "Logged In as " + current_user.name %>
-					<%= navbar_item "Log Out", log_out_path, class: "hover-box-shadow" %>
+					<%= navbar_item "Log Out", log_out_path, class: "active-box-shadow" %>
 				<% else %>
 					<%= navbar_text "Not Logged In" %>
-					<%= navbar_item "Sign Up", new_user_path, class: "hover-box-shadow" %>
+					<%= navbar_item "Sign Up", new_user_path, class: "active-box-shadow" %>
 				<% end %>
 			<% end %>
 			</div>

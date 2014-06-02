@@ -5,15 +5,11 @@
 
 			<br />
 
-			<%= link_to image_tag("GitHub-Mark-120px-plus.png",
-				                  title: "View this project on GitHub",
-				                  alt: "View this project on GitHub",
-				                  height: 32,
-				                  width: 32), Docket::GITHUB_URL %>
+			<%= link_to "Github", Docket::GITHUB_URL, class: "link-no-underline" %>
 
 			|
 
-			<b><%= link_to "Wiki", "https://github.com/kotct/docket/wiki", class: "link-no-underline" %></b>
+			<%= link_to "Wiki", "https://github.com/kotct/docket/wiki", class: "link-no-underline" %>
 		</small>
 	</div>
 </div>

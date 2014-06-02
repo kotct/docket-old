@@ -217,6 +217,11 @@ ul.navbar-nav > li a:hover, .navbar-header .navbar-brand:hover {
 	border-bottom: 3px solid #ccc;
 }
 
+ul.navbar-nav > li.hover-box-shadow:hover {
+	/* @include browser-extensions(box-shadow, inset 0 0 10px #ccc); */
+}
+
+
 .navbar.box-shadow {
 	@include browser-extensions(box-shadow, 0px 0px 5px 0px #ccc);
 }
